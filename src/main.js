@@ -19,6 +19,8 @@ const activityLevels = [
   { level: 4, name: 'Intenso', icon: '▲', text: 'Aventura para mantenerte en movimiento con rutas exigentes y experiencias al aire libre.' },
 ]
 
+const assetBase = import.meta.env.BASE_URL
+
 const translations = {
   es: { navTours: 'Tours', navAbout: 'Nosotros', navContact: 'Contacto', heroEyebrow: 'Tu próxima historia comienza aquí', heroTitle: 'Viajes que se quedan contigo.', heroText: 'Diseñamos experiencias con alma para que descubras el mundo a tu manera.', heroButton: 'Ver el tour destacado', finderTitle: '¿A dónde quieres ir?', finderText: 'Cuéntanos qué tienes en mente y te ayudamos a hacerlo realidad.', finderButton: 'Empezar a explorar', featured: 'El viaje que lo cambia todo', featuredTitle: 'Rodando con Javish', featuredText: 'Una ruta con buena vibra, paisajes que te dejan sin palabras y momentos para contar toda la vida.', featuredButton: 'Conocer la experiencia', picks: 'Selección Turoasis', picksTitle: 'Escapadas para sentir el mundo', picksText: 'Ideas reales para tu próxima aventura.', reasons: 'Viaja con tranquilidad', reasonTitle: 'Tu viaje, acompañado de principio a fin.', reasonText: 'No vendemos paquetes. Creamos recuerdos con la atención cercana de alguien que también ama viajar.', contactTitle: 'Hablemos de tu próximo viaje', contactText: 'Escríbenos y comencemos a diseñar esa experiencia que tienes pendiente.', contactButton: 'Escribir por WhatsApp' },
   en: { navTours: 'Tours', navAbout: 'About us', navContact: 'Contact', heroEyebrow: 'Your next story starts here', heroTitle: 'Trips that stay with you.', heroText: 'We design soulful experiences so you can discover the world your way.', heroButton: 'See the featured tour', finderTitle: 'Where do you want to go?', finderText: 'Tell us what you have in mind and we will help make it happen.', finderButton: 'Start exploring', featured: 'The trip that changes everything', featuredTitle: 'Rolling with Javish', featuredText: 'A feel-good route, breathtaking landscapes and moments you will talk about for years.', featuredButton: 'Discover the experience', picks: 'Turoasis selection', picksTitle: 'Getaways to feel the world', picksText: 'Real ideas for your next adventure.', reasons: 'Travel with peace of mind', reasonTitle: 'Your trip, accompanied from start to finish.', reasonText: 'We do not sell packages. We create memories with the close attention of someone who loves to travel too.', contactTitle: 'Let us talk about your next trip', contactText: 'Write to us and let us start designing the experience you have been waiting for.', contactButton: 'Write on WhatsApp' },
@@ -26,7 +28,7 @@ const translations = {
 
 document.querySelector('#app').innerHTML = `
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Turoasis, inicio"><img src="/logo.jpeg" alt="Turoasis" /></a>
+    <a class="brand" href="#top" aria-label="Turoasis, inicio"><img src="${assetBase}logo.jpeg" alt="Turoasis" /></a>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="#tours" data-i18n="navTours">Tours</a><a href="#nosotros" data-i18n="navAbout">Nosotros</a><a href="#contacto" data-i18n="navContact">Contacto</a>
@@ -53,7 +55,7 @@ document.querySelector('#app').innerHTML = `
 
     <section class="contact-section" id="contacto"><div class="contact-inner"><p class="eyebrow">¿LISTO PARA DESPEGAR?</p><h2 data-i18n="contactTitle">Hablemos de tu próximo viaje</h2><p data-i18n="contactText">Escríbenos y comencemos a diseñar esa experiencia que tienes pendiente.</p><a class="button button-light" href="https://wa.me/18098708595" target="_blank" rel="noreferrer" data-i18n="contactButton">Escribir por WhatsApp <span>↗</span></a></div></section>
   </main>
-  <footer><img src="/logo.jpeg" alt="Turoasis" /><div><a href="tel:+18098708595">(809) 870-8595</a><a href="mailto:info@turoasis.com">info@turoasis.com</a></div><small>© 2026 Turoasis. Experiencias inolvidables.</small></footer>
+  <footer><img src="${assetBase}logo.jpeg" alt="Turoasis" /><div><a href="tel:+18098708595">(809) 870-8595</a><a href="mailto:info@turoasis.com">info@turoasis.com</a></div><small>© 2026 Turoasis. Experiencias inolvidables.</small></footer>
   <div class="tour-modal" aria-hidden="true"><div class="modal-backdrop"></div><article class="modal-panel"><button class="modal-close" aria-label="Cerrar">×</button><div class="modal-gallery"><img class="modal-main-image" alt="" /><div class="modal-thumbs"></div></div><div class="modal-info"><p class="eyebrow modal-category"></p><h2 class="modal-title"></h2><p class="modal-description"></p><div class="modal-facts"><span class="modal-detail"></span><span class="modal-price"></span></div><a class="button button-dark modal-quote" href="mailto:info@turoasis.com">Solicitar cotización <span>↗</span></a></div></article></div>
   <div class="activity-modal" aria-hidden="true"><div class="modal-backdrop"></div><div class="activity-dialog"><button class="modal-close" aria-label="Cerrar">×</button><span class="activity-dialog-icon"></span><p class="eyebrow">NIVEL DE ACTIVIDAD</p><h2 class="activity-dialog-title"></h2><p class="activity-dialog-text"></p></div></div>
 `
