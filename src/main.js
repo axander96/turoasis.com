@@ -75,6 +75,7 @@ document.querySelector('#app').innerHTML = `
 `
 
 const setLanguage = (language) => { document.documentElement.lang = language; document.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = translations[language][element.dataset.i18n] }); document.querySelectorAll('.lang').forEach((button) => button.classList.toggle('active', button.dataset.lang === language)) }
+setLanguage('es')
 document.querySelectorAll('.lang').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)))
 const menuToggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.main-nav'); menuToggle.addEventListener('click', () => { const open = nav.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open) })
 document.querySelectorAll('.main-nav a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')))
