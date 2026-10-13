@@ -202,6 +202,7 @@
 .destination-section { display: block; background: #fff; }
 .destination-copy { max-width: 640px; }
 .destination-section .destination-copy { max-width: 1120px; }
+.destination-section .destination-copy h2 { max-width: 620px; }
 .destination-copy h2, .experiences-heading h2, .hotels-copy h2 { font-size: clamp(48px, 6vw, 84px); line-height: .96; margin-bottom: 25px; }
 .destination-copy > p:not(.eyebrow), .hotels-copy > p:not(.eyebrow) { color: var(--muted); line-height: 1.8; max-width: 1120px; margin-bottom: 0; }
 .destination-points { border-top: 1px solid var(--line); }
