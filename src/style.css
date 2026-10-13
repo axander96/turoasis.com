@@ -204,7 +204,12 @@
 .destination-section .destination-copy { max-width: 1120px; }
 .destination-section .destination-copy h2 { max-width: 620px; }
 .destination-copy h2, .experiences-heading h2, .hotels-copy h2 { font-size: clamp(48px, 6vw, 84px); line-height: .96; margin-bottom: 25px; }
-.featured { background: rgba(22, 167, 181, .11); border-radius: 26px; margin-top: 34px; margin-bottom: 34px; }
+.section-shell { padding-top: 76px; padding-bottom: 76px; }
+.eyebrow, .section-label { display: none; }
+.featured { position: relative; isolation: isolate; background: transparent; border-radius: 0; margin-top: 0; margin-bottom: 0; }
+.featured::before { content: ''; position: absolute; z-index: -1; inset: 0 calc((100vw - 100%) / -2); background: rgba(22, 167, 181, .11); }
+.reasons { max-width: none; padding-left: max(24px, calc((100vw - 1120px) / 2)); padding-right: max(24px, calc((100vw - 1120px) / 2)); background: #e2f0e8; }
+.reasons-grid { max-width: 1120px; margin: 0 auto; }
 .destination-copy > p:not(.eyebrow), .hotels-copy > p:not(.eyebrow) { color: var(--muted); line-height: 1.8; max-width: 1120px; margin-bottom: 0; }
 .destination-points { border-top: 1px solid var(--line); }
 .destination-points div { display: flex; align-items: center; gap: 22px; border-bottom: 1px solid var(--line); padding: 25px 0; font: 22px Georgia, serif; }
