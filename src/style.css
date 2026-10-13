@@ -207,6 +207,8 @@
 .destination-points div { display: flex; align-items: center; gap: 22px; border-bottom: 1px solid var(--line); padding: 25px 0; font: 22px Georgia, serif; }
 .destination-points strong { color: var(--green); font: 14px Arial, sans-serif; }
 .experiences-section { background: #e9f5ee; max-width: none; padding-left: max(24px, calc((100vw - 1120px) / 2)); padding-right: max(24px, calc((100vw - 1120px) / 2)); }
+.experiences-section { padding-top: 78px; }
+.experiences-section .experiences-heading { margin-bottom: 38px; }
 .experiences-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 50px; }
 .experiences-heading > p { max-width: 370px; color: var(--muted); line-height: 1.8; }
 .experience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
