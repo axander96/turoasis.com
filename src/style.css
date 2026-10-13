@@ -197,6 +197,28 @@
 .feature-javish { background-image: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4)),url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85') !important; }
 :root, body { background: #fff; }
 .site-header.is-scrolled, .finder, .tour-detail-page { background: #fff; }
+.site-header { position: absolute; background: transparent; border-radius: 0; }
+.site-header.is-scrolled { position: fixed; top: 14px; left: 3%; width: 94%; height: 72px; border-radius: 999px; padding-left: clamp(22px, 3vw, 45px); padding-right: clamp(22px, 3vw, 45px); }
+.destination-section { display: grid; grid-template-columns: 1.1fr .9fr; gap: 100px; align-items: center; background: #fff; }
+.destination-copy { max-width: 640px; }
+.destination-copy h2, .experiences-heading h2, .hotels-copy h2 { font-size: clamp(48px, 6vw, 84px); line-height: .96; margin-bottom: 25px; }
+.destination-copy > p:not(.eyebrow), .hotels-copy > p:not(.eyebrow) { color: var(--muted); line-height: 1.8; max-width: 490px; margin-bottom: 30px; }
+.destination-points { border-top: 1px solid var(--line); }
+.destination-points div { display: flex; align-items: center; gap: 22px; border-bottom: 1px solid var(--line); padding: 25px 0; font: 22px Georgia, serif; }
+.destination-points strong { color: var(--green); font: 14px Arial, sans-serif; }
+.experiences-section { background: #e9f5ee; max-width: none; padding-left: max(24px, calc((100vw - 1120px) / 2)); padding-right: max(24px, calc((100vw - 1120px) / 2)); }
+.experiences-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 50px; }
+.experiences-heading > p { max-width: 370px; color: var(--muted); line-height: 1.8; }
+.experience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.experience-grid article { background: #fff; border-radius: 18px; padding: 28px; min-height: 230px; }
+.experience-grid article > span { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; color: var(--green); background: #dff3e8; font-size: 20px; margin-bottom: 35px; }
+.experience-grid h3 { font-size: 21px; margin-bottom: 12px; }
+.experience-grid p { color: var(--muted); font-size: 13px; line-height: 1.65; }
+.hotels-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.hotels-image { min-height: 500px; border-radius: 22px; background: linear-gradient(180deg, transparent, rgba(18,57,54,.2)), url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=85') center/cover; }
+.hotel-benefits { display: flex; flex-wrap: wrap; gap: 9px; margin: 25px 0 30px; }
+.hotel-benefits span { border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px; color: var(--muted); font-size: 11px; }
+@media(max-width:760px){.site-header.is-scrolled{top:8px;left:3%;width:94%;height:62px}.destination-section,.hotels-section{display:block}.destination-points{margin-top:45px}.experiences-heading{display:block}.experiences-heading>p{margin-top:25px}.experience-grid{grid-template-columns:1fr 1fr;gap:10px}.experience-grid article{padding:20px;min-height:220px}.experience-grid h3{font-size:18px}.hotels-image{min-height:330px;margin-bottom:45px}}
 .tour-open { display: block; width: 100%; border: 0; background: transparent; color: inherit; text-align: left; padding: 0; cursor: pointer; font: inherit; }
 .tour-image { height: 290px; margin-bottom: 22px; border-radius: 0; overflow: hidden; }
 .tour-image b { position: absolute; left: 18px; bottom: 18px; color: #fff; background: var(--green); border-radius: 999px; padding: 10px 14px; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; opacity: 0; transition: opacity .25s; z-index: 1; }
