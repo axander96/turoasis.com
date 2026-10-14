@@ -272,7 +272,7 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .related-card strong { color: var(--green); font-size: 16px; }
 .detail-tabs { display: none; }
 .detail-panel { display: block; }
-.detail-panel + .detail-panel { margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line); }
+.detail-panel + .detail-panel { margin-top: 0; padding-top: 0; border-top: 0; }
 .button, .nav-cta { justify-content: center; }
 .detail-accordion { border-top: 1px solid var(--line); }
 .accordion-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 22px 0; border: 0; background: transparent; color: var(--ink); font: 27px var(--font-title); text-align: left; cursor: pointer; }
