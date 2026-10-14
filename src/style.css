@@ -267,10 +267,14 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .booking-rates { display: grid; gap: 8px; margin: 24px 0; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 .booking-rates span { display: flex; justify-content: space-between; }
 .booking-rates b { color: var(--ink); }
-.booking-date-box { padding: 15px; background: #eaf6ef; border-radius: 12px; margin-bottom: 15px; }
-.booking-date-box small { display: block; color: var(--green); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+.booking-date-box { position: relative; padding: 20px; background: #fff; border: 1px solid #e2e7eb; border-radius: 16px; margin-bottom: 15px; box-shadow: 0 8px 20px rgba(18,57,54,.06); }
+.booking-date-box small { display: block; color: #91a0b2; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+.booking-date-box small { font-size: 0; }
+.booking-date-box small::before { content: 'Salida'; font-size: 11px; }
 .booking-date-box p { color: var(--muted); font-size: 12px; margin: 0; }
-.booking-date { width: 100%; border: 0; background: transparent; color: var(--ink); font: 13px var(--font-body); outline: 0; }
+.booking-date { width: 100%; border: 0; background: transparent; color: var(--ink); font: 700 21px var(--font-body); outline: 0; padding: 0; }
+.booking-date-box:has(select)::after { content: 'Disponible'; display: inline-block; margin-top: 13px; padding: 8px 13px; border-radius: 999px; color: #087c53; background: #d7f5e6; font-size: 11px; font-weight: 700; }
+.booking-date-box:not(:has(select)) small::before { content: 'Fechas a coordinar'; }
 .request-modal { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; padding: 20px; }
 .request-modal.open { display: flex; }
 .request-backdrop { position: absolute; inset: 0; background: rgba(7,31,45,.65); backdrop-filter: blur(7px); }
