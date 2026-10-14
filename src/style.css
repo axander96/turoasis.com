@@ -243,9 +243,9 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .detail-kicker { color: #9de4c1; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 18px; }
 .detail-hero-cover h1 { font-size: clamp(48px, 7vw, 90px); line-height: .95; max-width: 800px; margin-bottom: 22px; }
 .detail-hero-description { max-width: 660px; color: rgba(255,255,255,.86); line-height: 1.7; font-size: 16px; }
-.detail-hero-cover .detail-facts { margin-top: 35px; display: flex; gap: 0; border: 0; max-width: 800px; }
-.detail-hero-cover .detail-facts span, .detail-hero-cover .detail-facts span:first-child { flex: 1; border-left: 0; padding: 16px 18px 16px 0; color: #fff; display: flex; flex-direction: row; align-items: center; gap: 10px; font-size: 20px; }
-.detail-hero-cover .detail-facts i { font-style: normal; color: #9de4c1; }
+.detail-hero-cover .detail-facts { margin-top: 35px; display: flex; flex-wrap: wrap; gap: 22px 30px; border: 0; max-width: 100%; }
+.detail-hero-cover .detail-facts span, .detail-hero-cover .detail-facts span:first-child { flex: 0 0 auto; border-left: 0; padding: 0; color: #fff; display: flex; flex-direction: row; align-items: center; gap: 8px; font-size: 15px; }
+.detail-hero-cover .detail-facts i { font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif; font-style: normal; color: #9de4c1; font-size: 19px; line-height: 1; }
 .detail-hero-cover .detail-facts b { color: #fff; font-size: 11px; font-weight: 500; }
 .detail-activity { margin-top: 18px; color: rgba(255,255,255,.78); font-size: 12px; }
 .detail-activity strong { color: #fff; margin-left: 10px; }
