@@ -242,6 +242,19 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .detail-activity { margin-top: 18px; color: rgba(255,255,255,.78); font-size: 12px; }
 .detail-activity strong { color: #fff; margin-left: 10px; }
 .detail-gallery-row { grid-template-columns: repeat(6, 1fr); }
+.detail-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border: 1px solid #dbe1e6; border-radius: 999px; margin: 0 0 45px; background: #fff; }
+.detail-tab { border: 0; border-radius: 999px; background: transparent; color: #536174; padding: 17px 12px; font: 600 16px var(--font-body); cursor: pointer; text-align: center; }
+.detail-tab.active { color: #fff; background: var(--dark); }
+.detail-panel { display: none; }
+.detail-panel.active { display: block; }
+.detail-panel > h2 { font-size: 42px; margin-bottom: 25px; }
+.panel-copy { color: var(--muted); line-height: 1.8; max-width: 620px; }
+.date-cards { display: grid; gap: 14px; }
+.date-card { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 25px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 8px 22px rgba(26,73,66,.05); }
+.date-card small { display: block; color: var(--muted); font-size: 11px; margin-bottom: 5px; }
+.date-card strong { font-size: 17px; }
+.date-card > span { color: #087c53; background: #d7f5e6; border-radius: 999px; padding: 9px 14px; font-size: 11px; font-weight: 700; }
+.button, .nav-cta { justify-content: center; }
 .detail-accordion { border-top: 1px solid var(--line); }
 .accordion-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 22px 0; border: 0; background: transparent; color: var(--ink); font: 27px var(--font-title); text-align: left; cursor: pointer; }
 .accordion-trigger span { color: var(--green); font: 22px var(--font-body); }
@@ -270,7 +283,7 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .request-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .request-form .button { width: 100%; justify-content: center; margin-top: 25px; }
 .request-close { position: absolute; top: 17px; right: 20px; border: 0; background: transparent; color: var(--ink); font-size: 28px; cursor: pointer; }
-@media(max-width:760px){.detail-hero-cover{min-height:680px}.detail-hero-inner{padding:38px 24px 42px}.detail-hero-cover .back-link{margin-bottom:55px}.detail-hero-cover h1{font-size:53px}.detail-hero-cover .detail-facts{display:grid;grid-template-columns:1fr 1fr;gap:0}.detail-hero-cover .detail-facts span{border-left:0;border-top:1px solid rgba(255,255,255,.35);padding:13px 0}.detail-hero-cover .detail-facts span:nth-child(3){grid-column:1/-1}.detail-gallery-row{grid-template-columns:repeat(3,1fr)}.detail-thumb{height:70px}.accordion-trigger{font-size:24px}.request-form{padding:32px 23px}.request-row{grid-template-columns:1fr}}
+@media(max-width:760px){.detail-hero-cover{min-height:680px}.detail-hero-inner{padding:38px 24px 42px}.detail-hero-cover .back-link{margin-bottom:55px}.detail-hero-cover h1{font-size:53px}.detail-hero-cover .detail-facts{display:grid;grid-template-columns:1fr 1fr;gap:0}.detail-hero-cover .detail-facts span{border-left:0;border-top:1px solid rgba(255,255,255,.35);padding:13px 0}.detail-hero-cover .detail-facts span:nth-child(3){grid-column:1/-1}.detail-gallery-row{grid-template-columns:repeat(3,1fr)}.detail-thumb{height:70px}.detail-tabs{grid-template-columns:repeat(2,1fr);border-radius:18px;gap:5px}.detail-tab{font-size:13px;padding:14px 7px}.date-card{display:block}.date-card > span{display:inline-block;margin-top:12px}.request-modal{padding:16px}.request-form{width:calc(100vw - 32px);max-height:90vh;padding:32px 23px;border-radius:22px}.request-row{grid-template-columns:1fr}}
 .destination-copy > p:not(.eyebrow), .hotels-copy > p:not(.eyebrow) { color: var(--muted); line-height: 1.8; max-width: 1120px; margin-bottom: 0; }
 .destination-points { border-top: 1px solid var(--line); }
 .destination-points div { display: flex; align-items: center; gap: 22px; border-bottom: 1px solid var(--line); padding: 25px 0; font: 22px Georgia, serif; }
