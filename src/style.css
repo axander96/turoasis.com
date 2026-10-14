@@ -284,6 +284,8 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .booking-label { color: var(--muted); font-size: 12px; margin: 0 0 4px; text-align: left; }
 .booking-price { display: block; color: var(--ink); font-size: 42px; line-height: 1; letter-spacing: -.05em; text-align: left; }
 .booking-note { display: block; color: var(--muted); font-size: 11px; margin-top: 7px; text-align: left; }
+.detail-booking > .booking-label { margin-bottom: 4px; }
+.detail-booking > .booking-note { margin-top: 7px; }
 .booking-rates { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; margin: 24px 0; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 .booking-rates span { display: flex; justify-content: flex-start; gap: 12px; }
 .booking-rates b { color: var(--ink); }
