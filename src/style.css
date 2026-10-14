@@ -256,6 +256,9 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .date-card > span { color: #087c53; background: #d7f5e6; border-radius: 999px; padding: 9px 14px; font-size: 11px; font-weight: 700; }
 .date-card { cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .2s; }
 .date-card:hover, .date-card.selected { border-color: var(--green); box-shadow: 0 10px 24px rgba(26,73,66,.1); transform: translateY(-2px); }
+.detail-tabs { display: none; }
+.detail-panel { display: block; }
+.detail-panel + .detail-panel { margin-top: 58px; padding-top: 45px; border-top: 1px solid var(--line); }
 .button, .nav-cta { justify-content: center; }
 .detail-accordion { border-top: 1px solid var(--line); }
 .accordion-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 22px 0; border: 0; background: transparent; color: var(--ink); font: 27px var(--font-title); text-align: left; cursor: pointer; }
@@ -290,7 +293,7 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .request-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .request-form .button { width: 100%; justify-content: center; margin-top: 25px; }
 .request-close { position: absolute; top: 17px; right: 20px; border: 0; background: transparent; color: var(--ink); font-size: 28px; cursor: pointer; }
-@media(max-width:760px){.detail-hero-cover{min-height:680px}.detail-hero-inner{padding:38px 24px 42px}.detail-hero-cover .back-link{margin-bottom:55px}.detail-hero-cover h1{font-size:53px}.detail-hero-cover .detail-facts{display:grid;grid-template-columns:1fr 1fr;gap:0}.detail-hero-cover .detail-facts span{border-left:0;border-top:1px solid rgba(255,255,255,.35);padding:13px 0}.detail-hero-cover .detail-facts span:nth-child(3){grid-column:1/-1}.detail-gallery-row{grid-template-columns:repeat(3,1fr)}.detail-thumb{height:70px}.detail-tabs{display:flex;flex-wrap:nowrap;gap:0;border-radius:999px;overflow:hidden;margin-bottom:32px}.detail-tab{flex:1 1 0;min-width:0;white-space:nowrap;font-size:11px;padding:12px 5px}.date-card{display:block}.date-card > span{display:inline-block;margin-top:12px}.request-modal{padding:16px}.request-form{width:calc(100vw - 32px);max-height:90vh;padding:32px 23px;border-radius:22px}.request-row{grid-template-columns:1fr}}
+@media(max-width:760px){.detail-hero-cover{min-height:680px}.detail-hero-inner{padding:38px 24px 42px}.detail-hero-cover .back-link{margin-bottom:55px}.detail-hero-cover h1{font-size:53px}.detail-hero-cover .detail-facts{display:grid;grid-template-columns:1fr 1fr;gap:0}.detail-hero-cover .detail-facts span{border-left:0;border-top:1px solid rgba(255,255,255,.35);padding:13px 0}.detail-hero-cover .detail-facts span:nth-child(3){grid-column:1/-1}.detail-gallery-row{grid-template-columns:repeat(3,1fr)}.detail-thumb{height:70px}.detail-tabs{display:flex;flex-wrap:nowrap;gap:0;border-radius:999px;overflow:hidden;margin-bottom:32px}.detail-panel{display:none}.detail-panel.active{display:block}.detail-panel + .detail-panel{margin-top:0;padding-top:0;border-top:0}.detail-tab{flex:1 1 0;min-width:0;white-space:nowrap;font-size:11px;padding:12px 5px}.date-card{display:block}.date-card > span{display:inline-block;margin-top:12px}.request-modal{padding:16px}.request-form{width:calc(100vw - 32px);max-height:90vh;padding:32px 23px;border-radius:22px}.request-row{grid-template-columns:1fr}}
 .destination-copy > p:not(.eyebrow), .hotels-copy > p:not(.eyebrow) { color: var(--muted); line-height: 1.8; max-width: 1120px; margin-bottom: 0; }
 .destination-points { border-top: 1px solid var(--line); }
 .destination-points div { display: flex; align-items: center; gap: 22px; border-bottom: 1px solid var(--line); padding: 25px 0; font: 22px Georgia, serif; }
