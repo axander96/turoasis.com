@@ -188,6 +188,9 @@
 .tour-card h3 { font-size: 24px; line-height: 1.04; margin-top: 13px; min-height: 0; }
 .tour-card .tour-detail { color: var(--ink); font-size: 12px; margin-top: 14px; }
 .tour-card .tour-date { color: var(--muted); font-size: 11px; margin-top: 7px; }
+.tour-availability { display: inline-flex; align-items: center; gap: 6px; width: max-content; color: var(--ink); background: #f0f4f7; border-radius: 999px; padding: 8px 11px; font-size: 11px; margin-top: 14px; transition: background .25s, color .25s; }
+.tour-availability .material-symbols-outlined { font-size: 15px; line-height: 1; }
+.tour-card:hover .tour-availability { color: #fff; background: var(--green); }
 .tour-price { border-top: 1px solid var(--line); margin-top: 19px; padding-top: 16px; display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: baseline; }
 .tour-price span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
 .tour-price strong { color: var(--green); font-size: 23px; letter-spacing: -.04em; }
