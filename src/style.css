@@ -351,6 +351,9 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .tour-image b { position: absolute; left: 18px; bottom: 18px; color: #fff; background: var(--green); border-radius: 999px; padding: 10px 14px; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; opacity: 0; transition: opacity .25s; z-index: 1; }
 .tour-card:hover .tour-image b { opacity: 1; }
 .activity-intro { display: flex; justify-content: space-between; align-items: end; gap: 50px; margin-bottom: 45px; }
+.activity-intro { display: block; }
+.activity-intro > div { max-width: 760px; }
+.activity-intro > div > p:not(.eyebrow) { max-width: 620px; color: var(--muted); line-height: 1.7; margin-top: 20px; }
 .activity-intro h2 { font-size: clamp(48px, 5vw, 72px); line-height: .95; }
 .activity-intro > p { max-width: 380px; color: var(--muted); line-height: 1.7; }
 .activity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
