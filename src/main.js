@@ -89,7 +89,7 @@ document.querySelector('#app').innerHTML = `
 
 const setLanguage = (language) => { document.documentElement.lang = language; document.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = translations[language][element.dataset.i18n] }); document.querySelectorAll('.lang').forEach((button) => button.classList.toggle('active', button.dataset.lang === language)); document.querySelectorAll('.tour-price strong, .tour-overlay-price b, .booking-price, .related-card strong').forEach((element) => { element.textContent = element.textContent.replace('US$ ', 'US$') }); document.querySelectorAll('.tour-image-activity').forEach((badge) => { const label = badge.querySelector('[data-i18n="tourLevel"]')?.textContent; const value = badge.querySelector('.activity-level-value')?.textContent; if (label && value) badge.textContent = `${label} ${value}` }) }
 setLanguage('es')
-document.querySelectorAll('.lang').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)))
+document.querySelectorAll('.lang').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang === 'es' ? 'en' : 'es')))
 const menuToggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.main-nav'); menuToggle.addEventListener('click', () => { const open = nav.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open) })
 document.querySelectorAll('.main-nav a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')))
 window.addEventListener('scroll', () => document.querySelector('.site-header').classList.toggle('is-scrolled', window.scrollY > 80))
