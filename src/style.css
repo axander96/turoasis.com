@@ -180,7 +180,7 @@
 .tour-card:hover { transform: translateY(-7px); box-shadow: 0 20px 42px rgba(26,73,66,.13); }
 .tour-card > p, .tour-card > h3, .tour-card > strong { display: block; margin-left: 24px; margin-right: 24px; }
 .tour-card > strong { color: var(--ink); margin-top: 15px; font-size: 18px; }
-.tour-card-body { display: flex; flex-direction: column; align-items: flex-start; padding: 0 24px; }
+.tour-card-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 0 24px; }
 .tour-card > .tour-open .tour-card-body > p, .tour-card > .tour-open .tour-card-body > h3 { margin-left: 0; margin-right: 0; }
 .tour-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .tour-card-top .tour-category { margin-bottom: 0; }
@@ -188,9 +188,10 @@
 .tour-card h3 { font-size: 24px; line-height: 1.04; margin-top: 13px; min-height: 0; }
 .tour-card .tour-detail { color: var(--ink); font-size: 12px; margin-top: 14px; }
 .tour-card .tour-date { color: var(--muted); font-size: 11px; margin-top: 7px; }
-.tour-availability { display: inline-flex; align-items: center; gap: 6px; width: max-content; color: var(--ink); background: #f0f4f7; border-radius: 999px; padding: 8px 11px; font-size: 11px; margin-top: 14px; transition: background .25s, color .25s; }
-.tour-availability .material-symbols-outlined { font-size: 15px; line-height: 1; }
-.tour-card:hover .tour-availability { color: #fff; background: var(--green); }
+.tour-availability { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; width: 100%; margin-top: 14px; }
+.tour-date-pill { display: inline-flex; align-items: center; gap: 5px; width: max-content; color: var(--ink); background: #f0f4f7; border-radius: 999px; padding: 7px 10px; font-size: 10px; transition: background .25s, color .25s; }
+.tour-date-pill .material-symbols-outlined { font-size: 14px; line-height: 1; }
+.tour-date-pill:hover, .tour-card:hover .tour-date-pill { color: #fff; background: var(--green); }
 .tour-price { border-top: 1px solid var(--line); margin-top: 19px; padding-top: 16px; display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: baseline; }
 .tour-price span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
 .tour-price strong { color: var(--green); font-size: 23px; letter-spacing: -.04em; }
@@ -226,8 +227,7 @@
 .button-outline { color: var(--green); background: transparent; border: 1px solid var(--green); }
 .button-outline:hover { color: #fff; background: var(--green); }
 .tour-card-body { position: relative; }
-.tour-availability { color: var(--muted); font-size: 11px; margin-top: 7px; }
-.tour-activity { align-self: flex-end; display: inline-flex; color: #fff; background: #087c53; border-radius: 999px; padding: 7px 11px; font-size: 10px; margin-top: 12px; }
+.tour-activity { align-self: flex-end; display: inline-flex; color: #fff; background: #087c53; border-radius: 999px; padding: 7px 11px; font-size: 10px; margin-top: auto; }
 .tour-itinerary { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); margin-top: 18px; padding-top: 15px; color: var(--green); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .tour-image { transition: transform .5s ease; }
 .tour-card:hover .tour-image { transform: scale(1.045); }
