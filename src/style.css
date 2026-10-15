@@ -265,8 +265,8 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .mobile-language { color: var(--ink); }
 .mobile-language .language-icon { color: var(--ink); }
 .detail-hero-cover .detail-facts b { color: #fff; font-size: 11px; font-weight: 500; }
-.detail-activity { margin-top: 18px; color: rgba(255,255,255,.78); font-size: 12px; }
-.detail-activity strong { color: #fff; margin-left: 10px; }
+.detail-activity { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 8px 12px; border-radius: 999px; color: #fff; background: #087c53; font-size: 11px; line-height: 1; }
+.detail-activity strong { color: #fff; margin-left: 0; }
 .detail-gallery-row { grid-template-columns: repeat(6, 1fr); }
 .detail-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 3px; border: 1px solid #dbe1e6; border-radius: 999px; margin: 0 0 45px; background: #fff; }
 .detail-tab { border: 0; border-radius: 999px; background: transparent; color: #536174; padding: 17px 12px; font: 600 16px var(--font-body); cursor: pointer; text-align: center; }
