@@ -323,7 +323,7 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .custom-select-hidden { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .custom-select { position: relative; width: 100%; }
 .custom-select-trigger { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); padding: 14px 38px 14px 15px; text-align: left; font: 14px var(--font-body); cursor: pointer; position: relative; }
-.booking-date-box > small { display: block !important; color: #91a0b2; font-size: 9px; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 2px; text-align: left; }
+.booking-date-box > small { display: block !important; color: #91a0b2; font-size: 9px; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 2px !important; text-align: left; }
 .booking-date-box .custom-select-trigger { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 9px 28px 9px 0; background: transparent; }
 .booking-date-box .next-departure { display: block; color: var(--ink); font: 700 16px var(--font-body); line-height: 1.15; text-align: left; }
 .custom-select-trigger::after { content: '⌄'; position: absolute; right: 15px; top: 50%; transform: translateY(-55%); color: var(--muted); font-size: 16px; }
