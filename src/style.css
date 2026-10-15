@@ -410,9 +410,10 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .activity-dialog-text { color: var(--muted); line-height: 1.7; }
 footer img { filter: grayscale(1) brightness(0) invert(1); mix-blend-mode: screen; }
 .site-footer { display: block; padding: 58px max(24px, calc((100vw - 1120px) / 2)) 24px; background: #0d2c2a; color: #d5e4df; }
+.site-footer .footer-brand { display: block; }
 .footer-main { display: flex; justify-content: space-between; gap: 60px; padding-bottom: 55px; }
 .footer-brand img { display: block; width: 175px; margin-bottom: 18px; }
-.footer-brand > p { color: #fff; font: 24px var(--font-title); margin-bottom: 28px; }
+.footer-brand > p { color: #fff; font: 16px var(--font-title); margin-bottom: 24px; }
 .footer-contact { display: grid; gap: 12px; }
 .footer-contact a { display: flex; align-items: center; gap: 10px; max-width: 580px; color: #b8ccc5; font-size: 12px; line-height: 1.5; }
 .footer-contact a:hover { color: #fff; }
