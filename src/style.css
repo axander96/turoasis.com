@@ -313,7 +313,9 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .booking-rates span { display: flex; justify-content: flex-start; gap: 12px; }
 .booking-rates b { color: var(--ink); }
 .booking-date-box { position: relative; width: min(100%, 280px); margin: 0 auto 15px; padding: 14px 16px; background: #fff; border: 1px solid #e2e7eb; border-radius: 14px; box-shadow: 0 6px 16px rgba(18,57,54,.05); text-align: center; }
-  .booking-date-box { box-sizing: border-box; width: min(100%, 220px); height: 63px; min-height: 63px; margin: 0 auto 15px; padding: 8px 10px; background: #fff; border: 1px solid #e2e7eb; border-radius: 14px; box-shadow: 0 6px 16px rgba(18,57,54,.05); text-align: left; display: flex; flex-direction: column; justify-content: center; }
+  .booking-date-box { box-sizing: border-box; width: 100%; max-width: none; height: 63px; min-height: 63px; margin: 0 0 15px; padding: 7px 10px; background: #fff; border: 1px solid #e2e7eb; border-radius: 14px; box-shadow: 0 6px 16px rgba(18,57,54,.05); text-align: left; display: flex; flex-direction: column; justify-content: center; }
+  .request-button { justify-content: center !important; }
+  .request-button > span { display: none; }
 .booking-date-box small { display: block; color: #91a0b2; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
 .booking-date-box small { font-size: 10px; }
 .booking-date-box p { color: var(--muted); font-size: 12px; margin: 0; }
