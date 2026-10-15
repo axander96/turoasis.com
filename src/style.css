@@ -354,11 +354,12 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .activity-intro h2 { font-size: clamp(48px, 5vw, 72px); line-height: .95; }
 .activity-intro > p { max-width: 380px; color: var(--muted); line-height: 1.7; }
 .activity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.activity-card { border: 1px solid var(--line); min-height: 225px; background: #fff; text-align: left; padding: 25px; position: relative; cursor: pointer; color: var(--ink); transition: border-color .25s, transform .25s, box-shadow .25s; }
+.activity-card { border: 1px solid var(--line); min-height: 225px; background: #fff; text-align: center; padding: 25px; position: relative; cursor: pointer; color: var(--ink); transition: border-color .25s, transform .25s, box-shadow .25s; }
 .activity-card:hover { border-color: var(--green); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(26,73,66,.08); }
-.activity-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #e1f4ea; color: var(--green); font-size: 24px; margin-bottom: 34px; }
+.activity-icon { display: grid; place-items: center; width: 82px; height: 82px; border-radius: 18px; background: transparent; margin: 0 auto 22px; }
+.activity-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .activity-number { position: absolute; right: 20px; top: 24px; color: var(--green); font: 17px Georgia, serif; }
-.activity-card strong, .activity-card small { display: block; }
+.activity-card strong, .activity-card small { display: block; text-align: center; }
 .activity-card strong { font: 25px Georgia, serif; margin-bottom: 12px; }
 .activity-card small { color: var(--muted); font-size: 11px; }
 .activity-card small span { color: var(--green); font-size: 15px; margin-left: 5px; }
@@ -382,6 +383,7 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .modal-quote { align-self: flex-start; }
 .activity-dialog { position: relative; z-index: 1; background: var(--cream); padding: 58px 55px 50px; width: min(500px, 100%); text-align: center; }
 .activity-dialog-icon { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 25px; border-radius: 50%; background: #dff3e8; color: var(--green); font-size: 35px; }
+.activity-dialog-icon img { width: 76px; height: 76px; object-fit: contain; border-radius: 16px; }
 .activity-dialog .eyebrow { margin-bottom: 10px; }
 .activity-dialog-title { font-size: 48px; margin-bottom: 18px; }
 .activity-dialog-text { color: var(--muted); line-height: 1.7; }
