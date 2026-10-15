@@ -54,6 +54,7 @@ Object.assign(translations.en, { navPlan: 'Plan my trip', tourLevel: 'Level', to
 document.querySelector('#app').innerHTML = `
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Turoasis, inicio"><img src="${assetBase}logo-principal.png" alt="Turoasis" /></a>
+    <div class="mobile-language language-switch"><span class="material-symbols-outlined language-icon" aria-hidden="true">language</span><button class="lang active" data-lang="es">ES</button><span class="language-divider">/</span><button class="lang" data-lang="en">EN</button></div>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="#destino" data-i18n="navDestination">Destino</a><a href="#tours" data-i18n="navTours">Tours</a><a href="#experiencias" data-i18n="navExperiences">Experiencias</a><a href="#hoteles" data-i18n="navHotels">Hoteles & Resorts</a><a href="#contacto" data-i18n="navContact">Contacto</a>

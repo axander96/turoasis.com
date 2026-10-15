@@ -257,6 +257,7 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .language-icon { font-size: 20px; line-height: 1; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20; }
 .language-divider { opacity: .5; }
 .language-divider, .language-switch .lang:not(.active) { display: none; }
+.mobile-language { display: none; }
 .detail-hero-cover .detail-facts b { color: #fff; font-size: 11px; font-weight: 500; }
 .detail-activity { margin-top: 18px; color: rgba(255,255,255,.78); font-size: 12px; }
 .detail-activity strong { color: #fff; margin-left: 10px; }
@@ -400,4 +401,4 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .activity-dialog-title { font-size: 48px; margin-bottom: 18px; }
 .activity-dialog-text { color: var(--muted); line-height: 1.7; }
 footer img { filter: grayscale(1) brightness(0) invert(1); mix-blend-mode: screen; }
-@media(max-width:760px){.site-header{background:rgba(247,245,239,.92);color:var(--ink)}.site-header .main-nav>a:not(.nav-cta),.site-header .language-switch,.site-header .language-switch .active{color:var(--ink)}.site-header.is-scrolled{height:72px}.activity-intro{display:block}.activity-intro>p{margin-top:25px}.activity-grid{grid-template-columns:repeat(2,1fr)}.activity-card{min-height:195px;padding:18px}.activity-icon{margin-bottom:24px}.modal-panel{grid-template-columns:1fr;max-height:calc(100vh - 30px)}.modal-main-image{height:280px}.modal-info{padding:25px 28px 30px}.modal-title{font-size:46px}.modal-facts{margin:20px 0}.activity-dialog{padding:52px 28px 38px}}
+@media(max-width:760px){.site-header{background:rgba(247,245,239,.92);color:var(--ink)}.site-header .main-nav>a:not(.nav-cta),.site-header .main-nav .language-switch,.site-header .language-switch .active{color:var(--ink)}.mobile-language{display:flex;margin-left:auto;margin-right:14px}.site-header.is-scrolled{height:72px}.activity-intro{display:block}.activity-intro>p{margin-top:25px}.activity-grid{grid-template-columns:repeat(2,1fr)}.activity-card{min-height:195px;padding:18px}.activity-icon{margin-bottom:24px}.modal-panel{grid-template-columns:1fr;max-height:calc(100vh - 30px)}.modal-main-image{height:280px}.modal-info{padding:25px 28px 30px}.modal-title{font-size:46px}.modal-facts{margin:20px 0}.activity-dialog{padding:52px 28px 38px}}
