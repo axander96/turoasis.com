@@ -213,6 +213,10 @@
 .tour-image .tour-image-activity { top: 16px; right: 16px; bottom: auto; left: auto; width: max-content; height: auto; display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 8px 11px; color: #fff; background: #087c53; font-family: var(--font-body); font-size: 11px; font-weight: 700; line-height: 1; }
 .tour-image .tour-image-activity > span { position: static !important; top: auto !important; right: auto !important; bottom: auto !important; left: auto !important; display: inline-flex; align-items: center; width: auto; height: auto; padding: 0; margin: 0; color: inherit !important; font-size: inherit; line-height: 1; vertical-align: middle; }
 .feature-javish { background-image: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4)),url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85') !important; }
+.feature-meta { display: flex; justify-content: center; gap: 10px; margin: 30px 0 26px; }
+.feature-meta span { border: 1px solid var(--turquoise); border-radius: 0; padding: 9px 12px; color: var(--ink); font-size: 11px; }
+.feature-cta { display: flex; width: max-content; margin: 0 auto; background: var(--turquoise); color: #fff; justify-content: center; }
+.feature-cta:hover { background: #0b8996; color: #fff; }
 :root, body { background: #fff; }
 .site-header.is-scrolled, .finder, .tour-detail-page { background: #fff; }
 .site-header { position: absolute; background: transparent; border-radius: 0; }
