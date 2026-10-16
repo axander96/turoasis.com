@@ -34,6 +34,18 @@ jobs:
         run: npm run build
       - name: Keep SPA routes working
         run: cp dist/index.html dist/404.html
+      - name: Deploy to Banahosting
+        if: ${{ secrets.BANAHOSTING_FTP_SERVER != '' && secrets.BANAHOSTING_FTP_USERNAME != '' && secrets.BANAHOSTING_FTP_PASSWORD != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.BANAHOSTING_FTP_SERVER }}
+          username: ${{ secrets.BANAHOSTING_FTP_USERNAME }}
+          password: ${{ secrets.BANAHOSTING_FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
+          dangerous-clean-slate: false
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
