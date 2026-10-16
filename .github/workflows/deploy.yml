@@ -43,7 +43,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          server-dir: /home/gamshbzy/public_html/
+          server-dir: /public_html/
           dangerous-clean-slate: false
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
