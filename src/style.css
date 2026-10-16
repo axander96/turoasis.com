@@ -450,19 +450,19 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .destination-dots span { width: 28px; height: 3px; background: rgba(255,255,255,.45); transition: width .3s, background .3s; }
 .destination-dots span.active { width: 54px; background: #b9f0d4; }
 @media(max-width:760px){.destination-carousel,.destination-carousel-content{min-height:650px}.destination-carousel-content{padding:90px 24px 65px}.destination-carousel-content h2{font-size:54px}.destination-carousel-content p{font-size:14px;line-height:1.65}}
-.hero-section { position: relative; isolation: isolate; min-height: 760px; background: transparent; overflow: hidden; }
+.hero-section { position: relative; isolation: isolate; min-height: 760px; align-items: flex-start; background: transparent; overflow: hidden; }
 .hero-slides, .hero-slide { position: absolute; inset: 0; }
 .hero-slide { background-position: center; background-size: cover; opacity: 0; transform: scale(1.04); transition: opacity 1.2s ease, transform 7s ease; }
 .hero-slide::after { content: ''; position: absolute; inset: 0; background: rgba(7,31,45,.55); }
 .hero-slide.active { opacity: 1; transform: scale(1); }
-.hero-section .hero-copy { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 180px 24px 90px; }
+.hero-section .hero-copy { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto; padding: 145px 24px 90px; }
 .hero-section .hero-copy h1 { max-width: 700px; font-size: clamp(52px, 7vw, 96px); line-height: .94; color: #fff; }
 .hero-section .hero-copy .hero-text { max-width: 900px; color: #fff; font-size: 16px; line-height: 1.75; text-shadow: 0 2px 5px rgba(0,0,0,.65); }
 .hero-section .hero-copy .eyebrow { display: block; color: #b9f0d4; }
 .hero-dots { display: flex; gap: 8px; margin-top: 34px; }
 .hero-dots span { width: 28px; height: 3px; background: rgba(255,255,255,.5); transition: width .3s, background .3s; }
 .hero-dots span.active { width: 54px; background: #b9f0d4; }
-@media(max-width:760px){.hero-section{min-height:720px}.hero-section .hero-copy{padding:150px 24px 70px}.hero-section .hero-copy h1{font-size:56px}.hero-section .hero-copy .hero-text{font-size:14px;line-height:1.65}}
+@media(max-width:760px){.hero-section{min-height:720px}.hero-section .hero-copy{padding:115px 24px 70px}.hero-section .hero-copy h1{font-size:56px}.hero-section .hero-copy .hero-text{font-size:14px;line-height:1.65}}
 footer img { filter: grayscale(1) brightness(0) invert(1); mix-blend-mode: screen; }
 .site-footer { display: block; padding: 58px max(24px, calc((100vw - 1120px) / 2)) 24px; background: #0d2c2a; color: #d5e4df; }
 .site-footer .footer-brand { display: block; }
