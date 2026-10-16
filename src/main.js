@@ -1,6 +1,6 @@
 import './style.css'
 
-const tours = [
+const legacyTours = [
   { code: 'RJ-009-SAMRD', category: 'Rodando con Javish', title: 'Rodando con Javish Samaná', detail: '5 días / 4 noches', price: 'Desde US$ 1,399', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 1,499 · Triple US$ 1,399 · Niños US$ 1,050', dates: '07 al 11 de marzo de 2027', activity: 3, featured: true, description: 'Una aventura por la península de Samaná con catamarán, Cayo Levantado, ballenas jorobadas, cultura local y una noche de gala con Javish Victoria y su grupo.', images: ['https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85'] },
   { code: 'TO-001-TTRD', category: 'República Dominicana', title: 'Todos los tesoros de República Dominicana', detail: '18 días / 17 noches', price: 'Desde US$ 3,899', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 4,599 · Triple US$ 3,599 · Niños US$ 2,925', dates: '15 de junio al 03 de julio de 2027', activity: 3, description: 'Un recorrido de punta a punta por playas, islas, lagos, ríos, cascadas y las montañas más hermosas del Caribe.', images: ['https://images.unsplash.com/photo-1505881502353-a1986add3762?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=85'] },
   { code: 'TO-002-SPARD', category: 'Montañas y costa norte', title: 'Sabor a sol, playa y montañas', detail: '8 días / 7 noches', price: 'Desde US$ 1,749', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 2,149 · Triple US$ 1,549 · Niños US$ 1,349', dates: '08 al 15 de enero de 2027', activity: 3, description: 'Santo Domingo, Santiago, Jarabacoa, San José de las Matas y las playas soleadas de la costa norte.', images: ['https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85'] },
@@ -11,6 +11,7 @@ const tours = [
   { code: 'TO-007-CERD', category: 'Costa este', title: 'La Costa Este, un paraíso tropical', detail: '6 días / 5 noches', price: 'Desde US$ 1,599', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 1,899 · Triple US$ 1,399 · Niños US$ 1,199', dates: '03 al 08 de marzo de 2027', activity: 2, description: 'Altos de Chavón, Isla Saona, Scape Park y las playas de Punta Cana en una experiencia de sol y cultura.', images: ['https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85'] },
   { code: 'RJ-010-SPRD', category: 'Rodando con Javish', title: 'Rodando con Javish Sur Profundo', detail: '5 días / 4 noches', price: 'Desde US$ 1,399', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 1,499 · Triple US$ 1,349 · Niños US$ 1,050', dates: '09 al 13 de agosto de 2027', activity: 3, featured: true, description: 'Barahona, Laguna de Oviedo y Bahía de las Águilas junto a Javish Victoria, con gala especial y glamping frente al paraíso.', images: ['https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85'] },
 ]
+const tours = []
 
 const scheduledDates = {
   'TO-001-TTRD': '15 de junio al 03 de julio de 2027|02 al 20 de agosto de 2027|16 de noviembre al 04 de diciembre de 2027',
@@ -43,35 +44,33 @@ const cmsMediaUrl = async (value) => {
 const cmsTour = async (item, index) => {
   const fields = item.acf || {}
   const cmsTitle = item.title?.rendered || ''
-  const fallback = tours.find((tour) => slugifyValue(tour.title) === item.slug) || tours.find((tour) => cmsTitle.toLowerCase().includes(tour.title.toLowerCase()) || tour.title.toLowerCase().includes(cmsTitle.toLowerCase())) || tours[index] || tours[0]
   const start = cmsDate(fields.fecha_salida)
   const end = cmsDate(fields.fecha_regreso)
   const cmsDates = splitCmsValues(fields.fechas_disponibles)
-  const dates = cmsDates.length ? cmsDates.join('|') : start && end ? `${start} al ${end}` : start || fallback.dates
+  const dates = cmsDates.length ? cmsDates.join('|') : start && end ? `${start} al ${end}` : start || ''
   const activityNames = { Relax: 1, Suave: 2, Activo: 3, Intenso: 4 }
-  const activity = Number(String(fields.nivel_actividad || '').match(/\d+/)?.[0]) || activityNames[fields.nivel_actividad] || fallback.activity
+  const activity = Number(String(fields.nivel_actividad || '').match(/\d+/)?.[0]) || activityNames[fields.nivel_actividad] || 1
   const cmsImages = (await Promise.all([fields.imagen_1, fields.imagen_2, fields.imagen_3, fields.imagen_4, fields.imagen_5, fields.imagen_6, fields.imagen_principal].map(cmsMediaUrl))).filter(Boolean)
   const textItinerary = splitCmsValues(fields.itinerario)
   const itineraryDays = Array.from({ length: 20 }, (_, index) => index + 1).map((day) => ({ title: fields[`dia_${day}_titulo`] || '', description: fields[`dia_${day}_descripcion`] || textItinerary[day - 1] || '' })).filter((day) => day.title || day.description)
   return {
-    ...fallback,
-    code: fields.codigo_del_tour || fallback.code,
-    category: fields.categoria || fallback.category,
-    detail: fields.duracion || fallback.detail,
-    title: item.title?.rendered || fallback.title,
-    description: fields.resumen || item.content?.rendered?.replace(/<[^>]+>/g, '') || fallback.description,
-    price: fields.precio ? `Desde US$ ${Number(fields.precio).toLocaleString('en-US')}` : fallback.price,
-    priceNote: fields.nota_precio || fallback.priceNote,
-    rates: fields.tarifas || fallback.rates,
+    code: fields.codigo_del_tour || '',
+    category: fields.categoria || '',
+    detail: fields.duracion || '',
+    title: cmsTitle,
+    description: fields.resumen || item.content?.rendered?.replace(/<[^>]+>/g, '') || '',
+    price: fields.precio ? `Desde US$ ${Number(fields.precio).toLocaleString('en-US')}` : '',
+    priceNote: fields.nota_precio || '',
+    rates: fields.tarifas || '',
     dates,
     activity,
     featured: fields.tour_destacado ?? fallback.featured,
     hidden: Boolean(fields.ocultar_de_la_web),
-    hotels: fields.hoteles || fallback.hotels || '',
+    hotels: '',
     itineraryDays,
     included: splitCmsValues(fields.incluye),
     excluded: splitCmsValues(fields.no_incluye),
-    images: cmsImages.length ? cmsImages : fallback.images,
+    images: cmsImages.length ? cmsImages : [''],
   }
 }
 const slugifyValue = (value) => String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
@@ -81,11 +80,8 @@ const hydrateToursFromCms = async () => {
     if (!response.ok) return
     const items = await response.json()
     if (Array.isArray(items) && items.length) {
-      const localTours = [...tours]
       const cmsTours = (await Promise.all(items.map(cmsTour))).filter((tour) => !tour.hidden)
-      const mergedTours = localTours.map((tour) => cmsTours.find((cmsItem) => cmsItem.code === tour.code) || tour)
-      cmsTours.filter((cmsItem) => !localTours.some((tour) => tour.code === cmsItem.code)).forEach((cmsItem) => mergedTours.push(cmsItem))
-      tours.splice(0, tours.length, ...mergedTours)
+      tours.splice(0, tours.length, ...cmsTours)
     }
   } catch {
     // Keep the local catalog available while the CMS is empty or unreachable.
@@ -139,7 +135,7 @@ document.querySelector('#app').innerHTML = `
 
     <section class="featured section-shell" id="destacado"><div class="section-label"><span data-i18n="featured">El viaje que lo cambia todo</span></div><div class="feature-grid"><div class="feature-image feature-javish"><span class="image-note">SAMANÁ / 07 — 11 MARZO 2027</span><span class="play-button">▶</span></div><div class="feature-copy"><p class="eyebrow">EXPERIENCIA DESTACADA · RJ-009-SAMRD</p><h2 data-i18n="featuredTitle">Rodando con Javish Samaná</h2><p data-i18n="featuredText">Un Proyecto Turístico en colaboración con el Programa televisivo “Mi Pueblo Por Dentro” y el carismático Artista Javish Victoria (Conjunto Quisqueya).</p><div class="feature-meta"><span>Nivel 3 / 4</span><span>Desde US$ 1,399</span></div><a class="button feature-cta" href="/tours/rodando-con-javish-samana" data-home-tour data-i18n="featuredButton">Conocer la experiencia</a></div></div></section>
 
-    <section class="picks section-shell" id="tours"><div class="section-label"><span data-i18n="picks">Selección Turoasis</span></div><div class="picks-heading"><div><h2 data-i18n="picksTitle">Escapadas para sentir el mundo</h2><p data-i18n="picksText">Tours reales por República Dominicana, con fechas y tarifas claras.</p></div></div><div class="tour-grid">${tours.map((tour, index) => `<article class="tour-card reveal ${tour.featured ? 'tour-card-featured' : ''}"><button class="tour-open" data-tour="${index}" aria-label="Ver itinerario de ${tour.title}"><div class="tour-image" style="background-image:url('${tour.images[0]}')">${tour.featured ? '<em>Rodando con Javish</em>' : ''}<span class="tour-image-activity"><span data-i18n="tourLevel">Nivel</span><span class="activity-level-value">${tour.activity} / 4</span></span><span class="tour-duration"><i class="tour-clock">◷</i><span>${tour.detail}</span></span><strong class="tour-overlay-price"><small>Desde</small><b>${tour.price.replace('Desde ', '')}</b></strong></div><div class="tour-card-body"><div class="tour-card-top"><p class="tour-category" data-i18n="tourCategory${index}">${tour.category}</p><span class="tour-code">${tour.code}</span></div><h3>${tour.title}</h3><div class="tour-availability">${tour.dates.split('|').map((date) => `<span class="tour-date-pill"><span class="material-symbols-outlined">calendar_today</span>${getTourStartDate(date)}</span>`).join('')}</div></div></button></article>`).join('')}</div><div class="tours-footer-cta"><a class="button button-outline" href="#tours"><span data-i18n="allTours">Ver todos los tours</span> <span>↗</span></a></div></section>
+    <section class="picks section-shell" id="tours"><div class="section-label"><span data-i18n="picks">Selección Turoasis</span></div><div class="picks-heading"><div><h2 data-i18n="picksTitle">Escapadas para sentir el mundo</h2><p data-i18n="picksText">Tours reales por República Dominicana, con fechas y tarifas claras.</p></div></div><div class="tour-grid">${tours.map((tour, index) => `<article class="tour-card reveal ${tour.featured ? 'tour-card-featured' : ''}"><button class="tour-open" data-tour="${index}" aria-label="Ver itinerario de ${tour.title}"><div class="tour-image" style="background-image:url('${tour.images[0]}')">${tour.featured ? '<em>Rodando con Javish</em>' : ''}<span class="tour-image-activity"><span data-i18n="tourLevel">Nivel</span><span class="activity-level-value">${tour.activity} / 4</span></span><span class="tour-duration"><i class="tour-clock">◷</i><span>${tour.detail}</span></span><strong class="tour-overlay-price"><small>Desde</small><b>${tour.price.replace('Desde ', '')}</b></strong></div><div class="tour-card-body"><div class="tour-card-top"><p class="tour-category">${tour.category}</p><span class="tour-code">${tour.code}</span></div><h3>${tour.title}</h3><div class="tour-availability">${tour.dates.split('|').filter(Boolean).map((date) => `<span class="tour-date-pill"><span class="material-symbols-outlined">calendar_today</span>${getTourStartDate(date)}</span>`).join('')}</div></div></button></article>`).join('')}</div><div class="tours-footer-cta"><a class="button button-outline" href="#tours"><span data-i18n="allTours">Ver todos los tours</span> <span>↗</span></a></div></section>
 
     <section class="activity section-shell"><div class="section-label"><span data-i18n="activityLabel">Nivel de actividad</span><span data-i18n="activityChoose">Elige tu ritmo</span></div><div class="activity-intro"><div><p class="eyebrow" data-i18n="activityEyebrow">ENCUENTRA TU RITMO</p><h2 data-i18n="activityTitle">Viaja como te gusta viajar.</h2><p data-i18n="activityText">Cada experiencia tiene su propio ritmo. Selecciona un nivel para conocer qué puedes esperar de tu próximo tour.</p></div></div><div class="activity-grid">${activityLevels.map((activity) => `<button class="activity-card" data-activity="${activity.level}"><span class="activity-icon"><img src="${assetBase}${activity.image}" alt=""></span><strong>${activity.level}. <span data-i18n="activityName${activity.level}">${activity.name}</span></strong><small data-i18n="activityMore">Ver descripción</small></button>`).join('')}</div></section>
 
