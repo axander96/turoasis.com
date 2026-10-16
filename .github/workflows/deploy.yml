@@ -43,7 +43,8 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          server-dir: /public_html/
+          server-dir: /
+          state-name: .ftp-deploy-sync-state-final.json
           dangerous-clean-slate: false
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
