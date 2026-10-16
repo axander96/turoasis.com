@@ -229,14 +229,14 @@
 .destination-copy { max-width: 640px; }
 .destination-section .destination-copy { max-width: 1120px; }
 .destination-section .destination-copy h2 { max-width: 620px; }
-.destination-section::after { content: ''; position: absolute; z-index: 0; left: -35%; top: 45%; width: 72%; height: 28%; border-radius: 50%; background: rgba(255,255,255,.14); filter: blur(14px); opacity: .7; pointer-events: none; animation: destination-wave 3s ease-in-out infinite; }
+.destination-section::after { content: ''; position: absolute; z-index: 0; left: 10%; bottom: -35%; width: 80%; height: 32%; border-radius: 50%; background: rgba(255,255,255,.14); filter: blur(14px); opacity: 0; pointer-events: none; animation: destination-wave 10s ease-in-out infinite; }
 .destination-section .destination-copy { position: relative; z-index: 1; }
 .destination-section .destination-copy > p { color: #fff !important; text-shadow: 0 2px 5px rgba(0,0,0,.65); font-weight: 600; }
 .destination-section .destination-copy h2 { animation: destination-title-in .8s ease both; }
 .destination-section .destination-copy > p { animation: destination-copy-in .8s .16s ease both; }
 @keyframes destination-title-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes destination-copy-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes destination-wave { 0%, 100% { transform: translateX(-8%) rotate(-4deg) scaleY(.85); } 50% { transform: translateX(145%) rotate(4deg) scaleY(1.1); } }
+@keyframes destination-wave { 0% { transform: translateY(100%) scaleX(.9) rotate(-3deg); opacity: 0; } 12% { opacity: .65; } 78% { opacity: .45; } 100% { transform: translateY(-430%) scaleX(1.15) rotate(3deg); opacity: 0; } }
 .destination-copy h2, .experiences-heading h2, .hotels-copy h2 { font-size: clamp(48px, 6vw, 84px); line-height: .96; margin-bottom: 25px; }
 .section-shell { padding-top: 76px; padding-bottom: 76px; }
 .eyebrow, .section-label { display: none; }
