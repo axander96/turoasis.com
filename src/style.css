@@ -224,7 +224,7 @@
 .site-header { position: absolute; background: transparent; border-radius: 0; }
 .site-header.is-scrolled { position: fixed; top: 14px; left: 3%; width: 94%; height: 72px; border-radius: 999px; padding-left: clamp(22px, 3vw, 45px); padding-right: clamp(22px, 3vw, 45px); }
 .destination-section { position: relative; isolation: isolate; display: block; color: #fff; background: transparent; border-radius: 0; overflow: hidden; }
-.destination-section::before { content: ''; position: absolute; z-index: -1; inset: 0 calc((100vw - 100%) / -2); background: linear-gradient(rgba(7,31,45,.68),rgba(7,31,45,.68)), url('/bienvenidos-republica-dominicana.png') center/cover; }
+.destination-section::before { content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: linear-gradient(rgba(7,31,45,.68),rgba(7,31,45,.68)), url('/bienvenidos-republica-dominicana.png') center/cover; }
 .destination-section .destination-copy h2, .destination-section .destination-copy > p { color: #fff; }
 .destination-copy { max-width: 640px; }
 .destination-section .destination-copy { max-width: 1120px; }
