@@ -59,7 +59,6 @@ document.querySelector('#app').innerHTML = `
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="#destino" data-i18n="navDestination">Destino</a><a href="#tours" data-i18n="navTours">Tours</a><a href="#experiencias" data-i18n="navExperiences">Experiencias</a><a href="#hoteles" data-i18n="navHotels">Hoteles & Resorts</a><a href="#contacto" data-i18n="navContact">Contacto</a>
       <div class="language-switch"><span class="material-symbols-outlined language-icon" aria-hidden="true">language</span><button class="lang active" data-lang="es">ES</button><span class="language-divider">/</span><button class="lang" data-lang="en">EN</button></div>
-      <a class="nav-cta" href="https://wa.me/18098708595" target="_blank" rel="noreferrer"><span data-i18n="navPlan">Planificar mi viaje</span> <span>↗</span></a>
     </nav>
   </header>
 
