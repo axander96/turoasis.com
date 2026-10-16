@@ -23,6 +23,51 @@ const scheduledDates = {
 }
 tours.forEach((tour) => { if (scheduledDates[tour.code]) tour.dates = scheduledDates[tour.code] })
 
+const cmsApiUrl = 'https://turoasis.com/cms/?rest_route=/wp/v2/tourtour&per_page=100&_embed=1'
+const cmsDate = (value) => {
+  if (!value) return ''
+  const [year, month, day] = String(value).slice(0, 10).split('-')
+  const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+  return year && month && day ? `${Number(day)} de ${months[Number(month) - 1]} de ${year}` : String(value)
+}
+const cmsTour = (item, index) => {
+  const fields = item.acf || {}
+  const cmsTitle = item.title?.rendered || ''
+  const fallback = tours.find((tour) => slugifyValue(tour.title) === item.slug) || tours.find((tour) => cmsTitle.toLowerCase().includes(tour.title.toLowerCase()) || tour.title.toLowerCase().includes(cmsTitle.toLowerCase())) || tours[index] || tours[0]
+  const start = cmsDate(fields.fecha_salida)
+  const end = cmsDate(fields.fecha_regreso)
+  const dates = start && end ? `${start} al ${end}` : start || fallback.dates
+  const activityNames = { Relax: 1, Suave: 2, Activo: 3, Intenso: 4 }
+  const activity = Number(fields.nivel_actividad) || activityNames[fields.nivel_actividad] || fallback.activity
+  const image = item._embedded?.['wp:featuredmedia']?.[0]?.source_url || fallback.images[0]
+  return {
+    ...fallback,
+    title: item.title?.rendered || fallback.title,
+    description: fields.resumen || item.content?.rendered?.replace(/<[^>]+>/g, '') || fallback.description,
+    price: fields.precio ? `Desde US$ ${Number(fields.precio).toLocaleString('en-US')}` : fallback.price,
+    dates,
+    activity,
+    images: [image, ...fallback.images.slice(1)],
+  }
+}
+const slugifyValue = (value) => String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+const hydrateToursFromCms = async () => {
+  try {
+    const response = await fetch(cmsApiUrl, { signal: AbortSignal.timeout(3500) })
+    if (!response.ok) return
+    const items = await response.json()
+    if (Array.isArray(items) && items.length) {
+      const localTours = [...tours]
+      const cmsTours = items.map(cmsTour)
+      const mergedTours = localTours.map((tour) => cmsTours.find((cmsItem) => cmsItem.code === tour.code) || tour)
+      cmsTours.filter((cmsItem) => !localTours.some((tour) => tour.code === cmsItem.code)).forEach((cmsItem) => mergedTours.push(cmsItem))
+      tours.splice(0, tours.length, ...mergedTours)
+    }
+  } catch {
+    // Keep the local catalog available while the CMS is empty or unreachable.
+  }
+}
+
 const activityLevels = [
   { level: 1, name: 'Relax', image: 'activity-relax.png', text: 'Ideal para descansar y disfrutar del destino a tu ritmo. Caminatas cortas y tiempo libre.' },
   { level: 2, name: 'Suave', image: 'activity-suave.png', text: 'Incluye paseos tranquilos, algunas caminatas y actividades sencillas durante el día.' },
@@ -53,6 +98,7 @@ Object.assign(translations.es, { navPlan: 'Planificar mi viaje', tourLevel: 'Niv
 Object.assign(translations.en, { navPlan: 'Plan my trip', tourLevel: 'Level', tourItinerary: 'View itinerary', allTours: 'View all tours' })
 const dynamicText = { es: { back: '← Volver a todos los tours', itinerary: 'Itinerario', includes: 'Qué incluye', hotels: 'Hoteles', dates: 'Fechas disponibles', included: 'Incluye', excluded: 'No incluye', hotelInfo: 'Alojamientos seleccionados según el recorrido y la disponibilidad de cada salida. Confirma las opciones exactas con nuestro equipo.', from: 'Tarifa desde', single: 'por persona en ocupación sencilla', double: 'Doble', triple: 'Triple', children: 'Niños', next: 'Próxima salida', contact: 'Contactar', request: 'Solicitar información', hotelRequest: 'Solicitar opciones de hoteles', response: 'Te contactaremos en menos de 24 horas con todos los detalles.', fullName: 'Nombre completo', email: 'Email', phone: 'Teléfono', date: 'Fecha', occupation: 'Ocupación', message: 'Mensaje (opcional)', destination: 'Destino o zona', hotelType: 'Tipo de alojamiento', approximateDates: 'Fechas aproximadas', send: 'Enviar solicitud', relatedEyebrow: 'CONTINÚA DESCUBRIENDO', relatedTitle: 'Tours relacionados', activity: 'NIVEL DE ACTIVIDAD' }, en: { back: '← Back to all tours', itinerary: 'Itinerary', includes: 'What is included', hotels: 'Hotels', dates: 'Available dates', included: 'Included', excluded: 'Not included', hotelInfo: 'Selected accommodations based on the route and availability for each departure. Confirm exact options with our team.', from: 'Starting at', single: 'per person in single occupancy', double: 'Double', triple: 'Triple', children: 'Children', next: 'Next departure', contact: 'Contact', request: 'Request information', hotelRequest: 'Request hotel options', response: 'We will contact you within 24 hours with all the details.', fullName: 'Full name', email: 'Email', phone: 'Phone', date: 'Date', occupation: 'Occupancy', message: 'Message (optional)', destination: 'Destination or area', hotelType: 'Accommodation type', approximateDates: 'Approximate dates', send: 'Send request', relatedEyebrow: 'KEEP DISCOVERING', relatedTitle: 'Related tours', activity: 'ACTIVITY LEVEL' } }
 
+await hydrateToursFromCms()
 document.querySelector('#app').innerHTML = `
   <header class="site-header">
     <a class="brand" href="${assetBase}" data-home aria-label="Turoasis, inicio"><img src="${assetBase}logo-principal.png" alt="Turoasis" /></a>
