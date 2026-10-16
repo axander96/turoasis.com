@@ -224,12 +224,12 @@
 .site-header { position: absolute; background: transparent; border-radius: 0; }
 .site-header.is-scrolled { position: fixed; top: 14px; left: 3%; width: 94%; height: 72px; border-radius: 999px; padding-left: clamp(22px, 3vw, 45px); padding-right: clamp(22px, 3vw, 45px); }
 .destination-section { position: relative; isolation: isolate; display: block; color: #fff; background: transparent; border-radius: 0; overflow: visible; }
-.destination-section::before { content: ''; position: absolute; z-index: -1; inset: 0 calc((100vw - 100%) / -2); background: linear-gradient(rgba(7,31,45,.58),rgba(7,31,45,.58)), url('/bienvenidos-republica-dominicana.png') center/cover; }
+.destination-section::before { content: ''; position: absolute; z-index: -1; inset: 0 calc((100vw - 100%) / -2); background: linear-gradient(rgba(7,31,45,.68),rgba(7,31,45,.68)), url('/bienvenidos-republica-dominicana.png') center/cover; }
 .destination-section .destination-copy h2, .destination-section .destination-copy > p { color: #fff; }
 .destination-copy { max-width: 640px; }
 .destination-section .destination-copy { max-width: 1120px; }
 .destination-section .destination-copy h2 { max-width: 620px; }
-.destination-section .destination-copy > p { text-shadow: 0 1px 4px rgba(0,0,0,.38); font-weight: 500; }
+.destination-section .destination-copy > p { color: #fff !important; text-shadow: 0 2px 5px rgba(0,0,0,.65); font-weight: 600; }
 .destination-copy h2, .experiences-heading h2, .hotels-copy h2 { font-size: clamp(48px, 6vw, 84px); line-height: .96; margin-bottom: 25px; }
 .section-shell { padding-top: 76px; padding-bottom: 76px; }
 .eyebrow, .section-label { display: none; }
