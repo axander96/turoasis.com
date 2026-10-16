@@ -144,7 +144,12 @@ document.querySelectorAll('.main-nav a').forEach((link) => link.addEventListener
   nav.classList.remove('open')
   const target = link.getAttribute('href')
   if (!target?.startsWith('#')) return
-  const section = document.querySelector(target)
+  let section = document.querySelector(target)
+  if (!section && typeof homeMarkup !== 'undefined') {
+    document.querySelector('#top').innerHTML = homeMarkup
+    bindTourLinks()
+    section = document.querySelector(target)
+  }
   if (!section) return
   event.preventDefault()
   section.scrollIntoView({ behavior: 'smooth', block: 'start' })
