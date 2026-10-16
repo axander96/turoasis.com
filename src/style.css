@@ -364,8 +364,10 @@ h1, h2, h3, h4 { font-family: var(--font-title); }
 .experiences-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 50px; }
 .experiences-heading > p { max-width: 370px; color: var(--muted); line-height: 1.8; }
 .experience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.experience-grid article { background: #fff; border-radius: 18px; padding: 28px; min-height: 230px; }
+.experience-grid article { background: #fff; border-radius: 18px; padding: 28px; min-height: 230px; text-align: center; }
 .experience-grid article > span { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; color: var(--green); background: #dff3e8; font-size: 20px; margin-bottom: 35px; }
+.experience-grid article > .experience-icon { width: 72px; height: 72px; border-radius: 16px; background: transparent; margin: 0 auto 25px; }
+.experience-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .experience-grid h3 { font-size: 21px; margin-bottom: 12px; }
 .experience-grid p { color: var(--muted); font-size: 13px; line-height: 1.65; }
 .hotels-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
