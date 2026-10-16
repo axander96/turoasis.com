@@ -23,7 +23,7 @@ const scheduledDates = {
 }
 tours.forEach((tour) => { if (scheduledDates[tour.code]) tour.dates = scheduledDates[tour.code] })
 
-const cmsApiUrl = 'https://turoasis.com/cms/?rest_route=/wp/v2/tourtour&per_page=100&_embed=1'
+const cmsApiUrl = 'https://turoasis.com/cms/index.php?rest_route=/wp/v2/tourtour&per_page=100&_embed=1'
 const cmsDate = (value) => {
   if (!value) return ''
   const [year, month, day] = String(value).slice(0, 10).split('-')
