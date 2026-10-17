@@ -30,28 +30,12 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Build for Banahosting
-        run: npm run build
-      - name: Save Banahosting build
-        run: mv dist dist-banahosting
-      - name: Build for GitHub Pages
+      - name: Build
         run: npm run build
         env:
           DEPLOY_TARGET: github-pages
       - name: Keep SPA routes working
         run: cp dist/index.html dist/404.html
-      - name: Deploy to Banahosting
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.BANAHOSTING_FTP_SERVER }}
-          username: ${{ secrets.BANAHOSTING_FTP_USERNAME }}
-          password: ${{ secrets.BANAHOSTING_FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./dist-banahosting/
-          server-dir: /
-          state-name: .ftp-deploy-sync-state-${{ github.sha }}.json
-          dangerous-clean-slate: false
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
