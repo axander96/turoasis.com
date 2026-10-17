@@ -4,6 +4,7 @@ const store = () => getStore({ name: 'turoasis-content', consistency: 'strong' }
 const jsonResponse = (body, options = {}) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json', ...(options.headers || {}) }, ...options })
 
 const defaultHomepage = {
+  catalog: { image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85', eyebrow: 'EXCURSIONES', title: 'Viajes diseñados para descubrir el mundo.', text: 'Circuitos guiados por destinos auténticos, experiencias memorables y el acompañamiento de Turoasis.' },
   hero: [
     { image: '/bienvenidos-republica-dominicana.png', eyebrow: 'BIENVENIDOS A REPÚBLICA DOMINICANA', title: 'Bienvenidos a República Dominicana', text: 'Rodeada por el Océano Atlántico hacia el Norte y el Mar Caribe hacia el Sur, República Dominicana se enorgullece de contar con más de 1,600 Km. de costa y 400 Km. de las mejores playas del mundo, magníficos hoteles y resorts, e infinidad de opciones en deportes, entretenimiento y recreación.' },
     { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=85', eyebrow: 'CARIBE SIN PRISA', title: 'El mar que te estaba esperando.', text: 'Playas de arena blanca, aguas transparentes y experiencias para descansar, descubrir y volver a conectar contigo.' },
