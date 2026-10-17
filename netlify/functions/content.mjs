@@ -1,6 +1,6 @@
 import { getStore } from '@netlify/blobs'
 
-const store = () => getStore({ name: 'turoasis-content', consistency: 'strong' })
+const store = () => getStore({ name: 'turoasis-content-v2', consistency: 'strong' })
 const jsonResponse = (body, options = {}) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', ...(options.headers || {}) }, ...options })
 
 const defaultHomepage = {
