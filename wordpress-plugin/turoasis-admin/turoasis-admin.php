@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Turoasis Admin
  * Description: Panel editorial personalizado para gestionar tours Turoasis.
- * Version: 1.0.6
+ * Version: 1.0.7
  */
 
 if (!defined('ABSPATH')) exit;
@@ -32,14 +32,14 @@ add_action('admin_enqueue_scripts', function ($hook) {
     if ($hook !== 'toplevel_page_turoasis-admin') return;
     wp_enqueue_media();
     wp_enqueue_script('wp-api-fetch');
-    wp_enqueue_script('turoasis-admin', plugin_dir_url(__FILE__) . 'admin.js', ['wp-api-fetch'], '1.0.6', true);
+    wp_enqueue_script('turoasis-admin', plugin_dir_url(__FILE__) . 'admin.js', ['wp-api-fetch'], '1.0.7', true);
     wp_enqueue_script('turoasis-homepage', plugin_dir_url(__FILE__) . 'homepage.js', ['turoasis-admin'], '1.0.0', true);
     wp_localize_script('turoasis-admin', 'turoasisAdmin', [
         'apiRoot' => esc_url_raw(home_url('/index.php?rest_route=/wp/v2/')),
         'nonce' => wp_create_nonce('wp_rest'),
         'homepageRoot' => esc_url_raw(home_url('/index.php?rest_route=/turoasis/v1/homepage')),
     ]);
-    wp_enqueue_style('turoasis-admin', plugin_dir_url(__FILE__) . 'admin.css', [], '1.0.6');
+    wp_enqueue_style('turoasis-admin', plugin_dir_url(__FILE__) . 'admin.css', [], '1.0.7');
     wp_enqueue_style('turoasis-homepage', plugin_dir_url(__FILE__) . 'homepage.css', [], '1.0.0');
 });
 
