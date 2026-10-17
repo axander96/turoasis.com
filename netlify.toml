@@ -10,15 +10,8 @@
 
 [[redirects]]
   from = "/admin"
-  to = "/admin/index.html"
+  to = "/admin.html"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
-  force = true
 
 [[redirects]]
   from = "/api/content"
