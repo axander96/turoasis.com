@@ -215,6 +215,8 @@
 .tour-image .tour-image-activity > span { position: static !important; top: auto !important; right: auto !important; bottom: auto !important; left: auto !important; display: inline-flex; align-items: center; width: auto; height: auto; padding: 0; margin: 0; color: inherit !important; font-size: inherit; line-height: 1; vertical-align: middle; }
 .feature-javish { background-image: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4)),url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85') !important; }
 .feature-image { border-radius: 22px; overflow: hidden; cursor: pointer; }
+.feature-image.feature-video { aspect-ratio: 16 / 9; min-height: 0; background: #000 !important; }
+.feature-video iframe { display: block; width: 100%; height: 100%; border: 0; }
 :root, body { background: #fff; }
 .destination-section .destination-copy h2, .destination-section .destination-copy > p { color: #fff !important; }
 .feature-meta { display: flex; justify-content: flex-start; gap: 10px; margin: 30px 0 26px; }
