@@ -1,13 +1,18 @@
 const cache = new Map()
 
+const translateChunk = async (text) => {
+  const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=es|en`
+  const response = await fetch(url)
+  const data = await response.json()
+  return data.responseData?.translatedText || text
+}
+
 const translateOne = async (text) => {
   if (!text.trim()) return text
   if (cache.has(text)) return cache.get(text)
   try {
-    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=es|en`
-    const response = await fetch(url)
-    const data = await response.json()
-    const translated = data.responseData?.translatedText || text
+    const chunks = text.length > 450 ? text.match(/.{1,430}(?:\s|$)/g) || [text] : [text]
+    const translated = (await Promise.all(chunks.map(translateChunk))).join(' ').trim()
     cache.set(text, translated)
     return translated
   } catch {
