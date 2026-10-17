@@ -1,1 +1,2 @@
 .remove-media{border:1px solid #cfcfcf;background:#fff;color:#111;padding:8px 10px;font-size:11px}.remove-media:disabled{opacity:.4;cursor:not-allowed}
+.danger{border:1px solid #b3261e;background:#fff;color:#b3261e;padding:12px 16px;border-radius:3px;font-size:12px;font-weight:700}.danger:hover{background:#fff1f0}.danger[hidden]{display:none}
