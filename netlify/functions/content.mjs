@@ -13,6 +13,27 @@ const defaultHomepage = {
   footer: {},
 }
 
+const defaultTours = [
+  {
+    id: 'rodando-con-javish-samana', code: 'RJ-009-SAMRD', category: 'Rodando con Javish', location: 'Samaná',
+    title: 'Rodando con Javish Samaná', detail: '5 días / 4 noches', price: 'US$ 1,399', priceNote: 'por persona en ocupación doble',
+    rateValues: { double: 'US$ 1,399', triple: 'US$ 1,299', children: 'US$ 1,050' }, dates: ['2027-03-07 al 2027-03-11'], activity: 3, featured: true,
+    description: 'Una aventura por la península de Samaná con catamarán, Cayo Levantado, ballenas jorobadas, cultura local y una noche de gala con Javish Victoria y su grupo.',
+    images: ['https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85'],
+    included: ['Alojamiento seleccionado', 'Traslados y asistencia local', 'Experiencias destacadas del recorrido'], excluded: ['Boletos aéreos internacionales', 'Gastos personales'],
+    itineraryDays: [{ title: 'Llegada y bienvenida', description: 'Recepción y comienzo de la experiencia en Samaná.' }, { title: 'Descubriendo el destino', description: 'Naturaleza, cultura y gastronomía local.' }],
+  },
+  {
+    id: 'la-brillante-costa-norte', code: 'TO-006-CNRD', category: 'Costa norte', location: 'Puerto Plata',
+    title: 'La brillante Costa Norte', detail: '6 días / 5 noches', price: 'US$ 1,499', priceNote: 'por persona en ocupación doble',
+    rateValues: { double: 'US$ 1,499', triple: 'US$ 1,299', children: 'US$ 1,125' }, dates: ['2027-01-10 al 2027-01-15'], activity: 3,
+    description: 'Puerto Plata, Cayo Arena, ámbar y playas del norte con el descanso final en un resort todo incluido.',
+    images: ['https://images.unsplash.com/photo-1505881502353-a1986add3762?auto=format&fit=crop&w=1200&q=85'],
+    included: ['Alojamiento seleccionado', 'Traslados y asistencia local'], excluded: ['Boletos aéreos internacionales', 'Gastos personales'],
+    itineraryDays: [{ title: 'Llegada a Puerto Plata', description: 'Instalación y bienvenida en el resort.' }, { title: 'Costa norte', description: 'Playas, ámbar y experiencias locales.' }],
+  },
+]
+
 const read = async (key, fallback) => {
   const value = await store().get(key, { type: 'json' })
   return value ?? fallback
@@ -28,7 +49,7 @@ export default async (request) => {
     if (request.method === 'GET') {
       const [homepage, tours] = await Promise.all([
         read('homepage', defaultHomepage),
-        read('tours', []),
+        read('tours', defaultTours),
       ])
       return jsonResponse({ homepage, tours })
     }
