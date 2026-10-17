@@ -67,6 +67,12 @@ const authorized = (request) => {
 
 export default async (request) => {
   try {
+    const mediaKey = new URL(request.url).searchParams.get('media')
+    if (request.method === 'GET' && mediaKey) {
+      const media = await store().get(mediaKey, { type: 'blob' })
+      if (!media) return new Response('Not found', { status: 404 })
+      return new Response(media, { headers: { 'cache-control': 'public, max-age=31536000, immutable' } })
+    }
     if (request.method === 'GET') {
       const [homepage, tours] = await Promise.all([
         read('homepage', defaultHomepage),
@@ -77,6 +83,16 @@ export default async (request) => {
 
     if (request.method !== 'POST' || !authorized(request)) {
       return jsonResponse({ error: 'No autorizado' }, { status: 401 })
+    }
+
+    if (request.headers.get('content-type')?.startsWith('multipart/form-data')) {
+      const form = await request.formData()
+      const file = form.get('file')
+      if (!file || typeof file.arrayBuffer !== 'function') return jsonResponse({ error: 'Archivo no válido' }, { status: 400 })
+      const safeName = String(file.name || 'image').replace(/[^a-z0-9._-]/gi, '-').toLowerCase()
+      const key = `media/${crypto.randomUUID()}-${safeName}`
+      await store().set(key, await file.arrayBuffer(), { metadata: { contentType: file.type || 'application/octet-stream' } })
+      return jsonResponse({ url: `/api/content?media=${encodeURIComponent(key)}` })
     }
 
     const body = await request.json()
