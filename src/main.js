@@ -36,7 +36,7 @@ const hydrateToursFromApi = async () => {
     // Keep the local catalog available while the content store is empty or unreachable.
   }
 }
-const homepageApiUrl = contentApiUrl
+const homepageApiUrl = contentApiUrl;
 const hydrateHomepageContent = async () => {
   try {
     const response = await fetch(homepageApiUrl, { cache: 'no-store' })
@@ -57,7 +57,7 @@ const hydrateHomepageContent = async () => {
     set('.footer-brand > p', content.footer?.tagline); setContact('.footer-contact a:nth-child(1)', content.footer?.address); setContact('.footer-contact a:nth-child(2)', content.footer?.phone); setContact('.footer-contact a:nth-child(3)', content.footer?.email); if (content.footer?.map) setAttribute('.footer-contact a:nth-child(1)', 'href', content.footer.map)
   } catch {}
 }
-const applyFeaturedMedia = (content) => { const featured = content?.featured || {}; const image = document.querySelector('.feature-image'); if (!image) return; if (featured.image) image.style.setProperty('background-image', `linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4)),url('${featured.image}')`, 'important'); if (featured.video) { image.setAttribute('role', 'link'); image.setAttribute('tabindex', '0'); image.setAttribute('aria-label', 'Ver video del tour destacado'); const openVideo = () => window.open(featured.video, '_blank', 'noopener,noreferrer'); image.addEventListener('click', openVideo); image.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openVideo() } }) } }
+const applyFeaturedMedia = (content) => { const featured = content?.featured || {}; const image = document.querySelector('.feature-image'); if (!image) return; const videoId = featured.video?.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^?&#/]+)/i)?.[1]; const cover = featured.image || (videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : ''); if (cover) image.style.setProperty('background-image', `linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4)),url('${cover}')`, 'important'); if (featured.video) { image.setAttribute('role', 'link'); image.setAttribute('tabindex', '0'); image.setAttribute('aria-label', 'Ver video del tour destacado'); const openVideo = () => window.open(featured.video, '_blank', 'noopener,noreferrer'); image.addEventListener('click', openVideo); image.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openVideo() } }) } }
 
 const activityLevels = [
   { level: 1, name: 'Relax', image: 'activity-relax.png', text: 'Ideal para descansar y disfrutar del destino a tu ritmo. Caminatas cortas y tiempo libre.' },
