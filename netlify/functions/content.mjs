@@ -1,7 +1,7 @@
 import { getStore } from '@netlify/blobs'
-import { json } from '@netlify/functions'
 
 const store = () => getStore({ name: 'turoasis-content', consistency: 'strong' })
+const jsonResponse = (body, options = {}) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json', ...(options.headers || {}) }, ...options })
 
 const defaultHomepage = {
   hero: [{}, {}, {}],
@@ -30,19 +30,19 @@ export default async (request) => {
         read('homepage', defaultHomepage),
         read('tours', []),
       ])
-      return json({ homepage, tours })
+      return jsonResponse({ homepage, tours })
     }
 
     if (request.method !== 'POST' || !authorized(request)) {
-      return json({ error: 'No autorizado' }, { status: 401 })
+      return jsonResponse({ error: 'No autorizado' }, { status: 401 })
     }
 
     const body = await request.json()
-    if (body.ping) return json({ ok: true })
+    if (body.ping) return jsonResponse({ ok: true })
     if (body.homepage) await store().setJSON('homepage', body.homepage)
     if (Array.isArray(body.tours)) await store().setJSON('tours', body.tours)
-    return json({ ok: true, ...(body.homepage ? { homepage: body.homepage } : {}), ...(body.tours ? { tours: body.tours } : {}) })
+    return jsonResponse({ ok: true, ...(body.homepage ? { homepage: body.homepage } : {}), ...(body.tours ? { tours: body.tours } : {}) })
   } catch (error) {
-    return json({ error: error.message || 'Error interno' }, { status: 500 })
+    return jsonResponse({ error: error.message || 'Error interno' }, { status: 500 })
   }
 }
