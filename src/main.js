@@ -45,6 +45,7 @@ const hydrateHomepageContent = async () => {
     const content = payload.homepage || payload
     window.turoasisHomepage = content
     const set = (selector, value) => { const element = document.querySelector(selector); if (element && value) element.textContent = value }
+    const setContact = (selector, value) => { const element = document.querySelector(selector); if (!element || !value) return; const icon = element.querySelector('.material-symbols-outlined'); element.replaceChildren(...(icon ? [icon, document.createTextNode(value)] : [document.createTextNode(value)])) }
     const setAttribute = (selector, attribute, value) => { const element = document.querySelector(selector); if (element && value) element.setAttribute(attribute, value) }
     content.hero?.forEach((slide, index) => { if (slide.image) document.querySelectorAll('.hero-slide')[index]?.style.setProperty('background-image', `url('${slide.image}')`); if (index === 0) { set('.hero-copy .eyebrow', slide.eyebrow); set('.hero-copy h1', slide.title); set('.hero-copy .hero-text', slide.text) } })
     set('.feature-copy h2', content.featured?.title); set('.feature-copy > p:not(.eyebrow)', content.featured?.text)
@@ -53,7 +54,7 @@ const hydrateHomepageContent = async () => {
     set('.experiences-heading h2', content.experiences?.title); content.experiences?.cards?.forEach((card, index) => { set(`.experience-grid article:nth-child(${index + 1}) h3`, card.title); set(`.experience-grid article:nth-child(${index + 1}) p`, card.text); const image = document.querySelector(`.experience-grid article:nth-child(${index + 1}) img`); if (image && card.image) image.src = card.image })
     set('.hotels-copy .eyebrow', content.hotels?.eyebrow); set('.hotels-copy h2', content.hotels?.title); set('.hotels-copy > p:not(.eyebrow)', content.hotels?.text); if (content.hotels?.image) document.querySelector('.hotels-image')?.style.setProperty('background-image', `url('${content.hotels.image}')`)
     set('.contact-inner h2', content.contact?.title); set('.contact-inner > p:not(.eyebrow)', content.contact?.text); if (content.contact?.whatsapp) setAttribute('.whatsapp-button', 'href', content.contact.whatsapp)
-    set('.footer-brand > p', content.footer?.tagline); set('.footer-contact a:nth-child(1)', content.footer?.address); set('.footer-contact a:nth-child(2)', content.footer?.phone); set('.footer-contact a:nth-child(3)', content.footer?.email); if (content.footer?.map) setAttribute('.footer-contact a:nth-child(1)', 'href', content.footer.map)
+    set('.footer-brand > p', content.footer?.tagline); setContact('.footer-contact a:nth-child(1)', content.footer?.address); setContact('.footer-contact a:nth-child(2)', content.footer?.phone); setContact('.footer-contact a:nth-child(3)', content.footer?.email); if (content.footer?.map) setAttribute('.footer-contact a:nth-child(1)', 'href', content.footer.map)
   } catch {}
 }
 
