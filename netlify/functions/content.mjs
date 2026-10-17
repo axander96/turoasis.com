@@ -36,7 +36,7 @@ const defaultHomepage = {
 
 const defaultTours = [
   {
-    id: 'rodando-con-javish-samana', code: 'RJ-009-SAMRD', category: 'Rodando con Javish', location: 'Samaná',
+    id: 'rodando-con-javish-samana', label: 'Rodando con Javish', code: 'RJ-009-SAMRD', category: 'Rodando con Javish', location: 'Samaná',
     title: 'Rodando con Javish Samaná', detail: '5 días / 4 noches', price: 'US$ 1,399', priceNote: 'por persona en ocupación doble',
     rateValues: { double: 'US$ 1,399', triple: 'US$ 1,299', children: 'US$ 1,050' }, dates: ['2027-03-07 al 2027-03-11'], activity: 3, featured: true,
     description: 'Una aventura por la península de Samaná con catamarán, Cayo Levantado, ballenas jorobadas, cultura local y una noche de gala con Javish Victoria y su grupo.',
