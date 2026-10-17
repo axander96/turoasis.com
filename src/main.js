@@ -11,7 +11,7 @@ const legacyTours = [
   { code: 'TO-007-CERD', category: 'Costa este', title: 'La Costa Este, un paraíso tropical', detail: '6 días / 5 noches', price: 'Desde US$ 1,599', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 1,899 · Triple US$ 1,399 · Niños US$ 1,199', dates: '03 al 08 de marzo de 2027', activity: 2, description: 'Altos de Chavón, Isla Saona, Scape Park y las playas de Punta Cana en una experiencia de sol y cultura.', images: ['https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85'] },
   { code: 'RJ-010-SPRD', category: 'Rodando con Javish', title: 'Rodando con Javish Sur Profundo', detail: '5 días / 4 noches', price: 'Desde US$ 1,399', priceNote: 'por persona en ocupación doble', rates: 'Solo US$ 1,499 · Triple US$ 1,349 · Niños US$ 1,050', dates: '09 al 13 de agosto de 2027', activity: 3, featured: true, description: 'Barahona, Laguna de Oviedo y Bahía de las Águilas junto a Javish Victoria, con gala especial y glamping frente al paraíso.', images: ['https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=900&q=85', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85'] },
 ]
-const tours = []
+const tours = [...legacyTours]
 
 const scheduledDates = {
   'TO-001-TTRD': '15 de junio al 03 de julio de 2027|02 al 20 de agosto de 2027|16 de noviembre al 04 de diciembre de 2027',
@@ -24,7 +24,7 @@ const scheduledDates = {
 }
 tours.forEach((tour) => { if (scheduledDates[tour.code]) tour.dates = scheduledDates[tour.code] })
 
-const cmsApiUrl = 'https://turoasis.com/cms/index.php?rest_route=/wp/v2/tourtour&per_page=100&_embed=1'
+const contentApiUrl = '/api/content'
 const cmsDate = (value) => {
   if (!value) return ''
   const raw = String(value).trim()
@@ -78,25 +78,37 @@ const cmsTour = async (item, index) => {
   }
 }
 const slugifyValue = (value) => String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+const normalizeNetlifyTour = (item) => ({
+  ...item,
+  category: item.category || item.location || '',
+  location: item.location || item.category || '',
+  detail: item.detail || item.duration || '',
+  dates: Array.isArray(item.dates) ? item.dates.join('|') : String(item.dates || ''),
+  images: Array.isArray(item.images) && item.images.length ? item.images : [''],
+  rateValues: item.rateValues || { double: '', triple: '', children: '' },
+  included: Array.isArray(item.included) ? item.included : splitCmsValues(item.included),
+  excluded: Array.isArray(item.excluded) ? item.excluded : splitCmsValues(item.excluded),
+  itineraryDays: Array.isArray(item.itineraryDays) ? item.itineraryDays : [],
+})
 const hydrateToursFromCms = async () => {
   try {
-    const response = await fetch(cmsApiUrl, { signal: AbortSignal.timeout(3500) })
+    const response = await fetch(contentApiUrl, { signal: AbortSignal.timeout(3500) })
     if (!response.ok) return
-    const items = await response.json()
-    if (Array.isArray(items) && items.length) {
-      const cmsTours = (await Promise.all(items.map(cmsTour))).filter((tour) => !tour.hidden)
-      tours.splice(0, tours.length, ...cmsTours)
+    const payload = await response.json()
+    if (Array.isArray(payload.tours) && payload.tours.length) {
+      tours.splice(0, tours.length, ...payload.tours.map(normalizeNetlifyTour).filter((tour) => !tour.hidden))
     }
   } catch {
-    // Keep the local catalog available while the CMS is empty or unreachable.
+    // Keep the local catalog available while the content store is empty or unreachable.
   }
 }
-const homepageApiUrl = 'https://turoasis.com/cms/index.php?rest_route=/turoasis/v1/homepage'
+const homepageApiUrl = contentApiUrl
 const hydrateHomepageContent = async () => {
   try {
     const response = await fetch(homepageApiUrl)
     if (!response.ok) return
-    const content = await response.json()
+    const payload = await response.json()
+    const content = payload.homepage || payload
     const set = (selector, value) => { const element = document.querySelector(selector); if (element && value) element.textContent = value }
     const setAttribute = (selector, attribute, value) => { const element = document.querySelector(selector); if (element && value) element.setAttribute(attribute, value) }
     content.hero?.forEach((slide, index) => { if (slide.image) document.querySelectorAll('.hero-slide')[index]?.style.setProperty('background-image', `url('${slide.image}')`); if (index === 0) { set('.hero-copy .eyebrow', slide.eyebrow); set('.hero-copy h1', slide.title); set('.hero-copy .hero-text', slide.text) } })
