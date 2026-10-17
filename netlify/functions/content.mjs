@@ -1,7 +1,7 @@
 import { getStore } from '@netlify/blobs'
 
 const store = () => getStore({ name: 'turoasis-content', consistency: 'strong' })
-const jsonResponse = (body, options = {}) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json', ...(options.headers || {}) }, ...options })
+const jsonResponse = (body, options = {}) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', ...(options.headers || {}) }, ...options })
 
 const defaultHomepage = {
   catalog: { image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85', eyebrow: 'EXCURSIONES', title: 'Viajes diseñados para descubrir el mundo.', text: 'Circuitos guiados por destinos auténticos, experiencias memorables y el acompañamiento de Turoasis.' },
@@ -10,7 +10,7 @@ const defaultHomepage = {
     { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=85', eyebrow: 'CARIBE SIN PRISA', title: 'El mar que te estaba esperando.', text: 'Playas de arena blanca, aguas transparentes y experiencias para descansar, descubrir y volver a conectar contigo.' },
     { image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=2200&q=85', eyebrow: 'NATURALEZA DOMINICANA', title: 'Aventuras que se sienten.', text: 'Montañas, ríos y parques naturales para vivir el lado más auténtico y emocionante de la isla.' },
   ],
-  featured: { label: 'El viaje que lo cambia todo', title: 'Rodando con Javish Samaná', code: 'RJ-009-SAMRD', text: 'Un Proyecto Turístico en colaboración con el Programa televisivo “Mi Pueblo Por Dentro” y el carismático Artista Javish Victoria (Conjunto Quisqueya).' },
+  featured: { label: 'El viaje que lo cambia todo', title: 'Rodando con Javish Samaná', code: 'RJ-009-SAMRD', text: 'Un Proyecto Turístico en colaboración con el Programa televisivo “Mi Pueblo Por Dentro” y el carismático Artista Javish Victoria (Conjunto Quisqueya).', image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85', video: '' },
   activity: {
     title: 'Viaja como te gusta viajar.', text: 'Cada experiencia tiene su propio ritmo. Selecciona un nivel para conocer qué puedes esperar de tu próximo tour.',
     levels: [
@@ -59,6 +59,7 @@ const read = async (key, fallback) => {
   const value = await store().get(key, { type: 'json' })
   return value ?? fallback
 }
+const mergeHomepageDefaults = (value) => ({ ...defaultHomepage, ...value, catalog: { ...defaultHomepage.catalog, ...(value?.catalog || {}) }, featured: { ...defaultHomepage.featured, ...(value?.featured || {}) }, activity: { ...defaultHomepage.activity, ...(value?.activity || {}), levels: value?.activity?.levels?.length ? value.activity.levels : defaultHomepage.activity.levels }, experiences: { ...defaultHomepage.experiences, ...(value?.experiences || {}), cards: value?.experiences?.cards?.length ? value.experiences.cards : defaultHomepage.experiences.cards }, hotels: { ...defaultHomepage.hotels, ...(value?.hotels || {}) }, contact: { ...defaultHomepage.contact, ...(value?.contact || {}) }, footer: { ...defaultHomepage.footer, ...(value?.footer || {}) } })
 
 const authorized = (request) => {
   const expected = process.env.ADMIN_PASSWORD
@@ -74,10 +75,11 @@ export default async (request) => {
       return new Response(media, { headers: { 'cache-control': 'public, max-age=31536000, immutable' } })
     }
     if (request.method === 'GET') {
-      const [homepage, tours] = await Promise.all([
+      const [storedHomepage, tours] = await Promise.all([
         read('homepage', defaultHomepage),
         read('tours', defaultTours),
       ])
+      const homepage = mergeHomepageDefaults(storedHomepage)
       return jsonResponse({ homepage, tours })
     }
 
@@ -99,7 +101,9 @@ export default async (request) => {
     if (body.ping) return jsonResponse({ ok: true })
     if (body.homepage) await store().setJSON('homepage', body.homepage)
     if (Array.isArray(body.tours)) await store().setJSON('tours', body.tours)
-    return jsonResponse({ ok: true, ...(body.homepage ? { homepage: body.homepage } : {}), ...(body.tours ? { tours: body.tours } : {}) })
+    const [storedHomepage, tours] = await Promise.all([read('homepage', defaultHomepage), read('tours', defaultTours)])
+    const homepage = mergeHomepageDefaults(storedHomepage)
+    return jsonResponse({ ok: true, homepage, tours })
   } catch (error) {
     return jsonResponse({ error: error.message || 'Error interno' }, { status: 500 })
   }

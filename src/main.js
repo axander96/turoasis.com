@@ -26,7 +26,7 @@ const normalizeNetlifyTour = (item) => ({
 })
 const hydrateToursFromApi = async () => {
   try {
-    const response = await fetch(contentApiUrl, { signal: AbortSignal.timeout(3500) })
+    const response = await fetch(contentApiUrl, { cache: 'no-store', signal: AbortSignal.timeout(3500) })
     if (!response.ok) return
     const payload = await response.json()
     if (Array.isArray(payload.tours) && payload.tours.length) {
@@ -39,7 +39,7 @@ const hydrateToursFromApi = async () => {
 const homepageApiUrl = contentApiUrl
 const hydrateHomepageContent = async () => {
   try {
-    const response = await fetch(homepageApiUrl)
+    const response = await fetch(homepageApiUrl, { cache: 'no-store' })
     if (!response.ok) return
     const payload = await response.json()
     const content = payload.homepage || payload
@@ -57,6 +57,7 @@ const hydrateHomepageContent = async () => {
     set('.footer-brand > p', content.footer?.tagline); setContact('.footer-contact a:nth-child(1)', content.footer?.address); setContact('.footer-contact a:nth-child(2)', content.footer?.phone); setContact('.footer-contact a:nth-child(3)', content.footer?.email); if (content.footer?.map) setAttribute('.footer-contact a:nth-child(1)', 'href', content.footer.map)
   } catch {}
 }
+const applyFeaturedMedia = (content) => { const featured = content?.featured || {}; const image = document.querySelector('.feature-image'); if (!image) return; if (featured.image) image.style.setProperty('background-image', `linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4)),url('${featured.image}')`, 'important'); if (featured.video) { image.setAttribute('role', 'link'); image.setAttribute('tabindex', '0'); image.setAttribute('aria-label', 'Ver video del tour destacado'); const openVideo = () => window.open(featured.video, '_blank', 'noopener,noreferrer'); image.addEventListener('click', openVideo); image.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openVideo() } }) } }
 
 const activityLevels = [
   { level: 1, name: 'Relax', image: 'activity-relax.png', text: 'Ideal para descansar y disfrutar del destino a tu ritmo. Caminatas cortas y tiempo libre.' },
@@ -128,6 +129,7 @@ const localizeDynamicContent = () => { const text = dynamicText[currentLanguage]
 const setLanguage = (language) => { currentLanguage = language; document.documentElement.lang = language; document.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = translations[language][element.dataset.i18n] }); document.querySelectorAll('.lang').forEach((button) => button.classList.toggle('active', button.dataset.lang === language)); document.querySelectorAll('.tour-price strong, .tour-overlay-price b, .booking-price, .related-card strong').forEach((element) => { element.textContent = element.textContent.replace('US$ ', 'US$') }); document.querySelectorAll('.tour-image-activity').forEach((badge) => { const label = badge.querySelector('[data-i18n="tourLevel"]')?.textContent; const value = badge.querySelector('.activity-level-value')?.textContent; if (label && value) badge.textContent = `${label} ${value}` }); localizeDynamicContent(); localizeIncludedDetails() }
 setLanguage('es')
 await hydrateHomepageContent()
+applyFeaturedMedia(window.turoasisHomepage)
 document.querySelectorAll('.lang').forEach((button) => button.addEventListener('click', (event) => { const mobile = button.closest('.mobile-language'); if (mobile && !mobile.classList.contains('open')) { event.stopPropagation(); mobile.classList.add('open'); return } setLanguage(mobile ? button.dataset.lang : button.dataset.lang === 'es' ? 'en' : 'es'); if (mobile) mobile.classList.remove('open') }))
 const mobileLanguage = document.querySelector('.mobile-language'); mobileLanguage?.addEventListener('click', (event) => { if (!event.target.closest('.lang')) mobileLanguage.classList.toggle('open') })
 const menuToggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.main-nav'); menuToggle.addEventListener('click', () => { const open = nav.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open) })
