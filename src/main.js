@@ -65,7 +65,7 @@ const activityLevels = [
 ]
 const activityTextsEn = ['Ideal for resting and enjoying the destination at your own pace. Short walks and free time.', 'Includes relaxed walks and simple activities throughout the day.', 'For travelers who enjoy exploring, long walks, nature and more active days.', 'Adventure for travelers who want to stay moving with demanding routes and outdoor experiences.']
 
-const getTourStartDate = (dates) => { const firstDate = dates?.split('|')[0]?.trim() || ''; if (/^\d{8}/.test(firstDate)) return cmsDate(firstDate.slice(0, 8)); const match = firstDate.match(/(?:\d{1,2} al )?(\d{1,2}) de ([a-záéíóú]+)/i); if (!match) return firstDate; const months = { enero: 'ene', febrero: 'feb', marzo: 'mar', abril: 'abr', mayo: 'may', junio: 'jun', julio: 'jul', agosto: 'ago', septiembre: 'sep', octubre: 'oct', noviembre: 'nov', diciembre: 'dic' }; return `${match[1]}-${months[match[2].toLowerCase()] || match[2].slice(0, 3)}` }
+const getTourStartDate = (dates) => formatDepartureDate(dates?.split('|')[0]?.trim() || '')
 
 const assetBase = import.meta.env.BASE_URL
 
